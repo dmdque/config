@@ -4,9 +4,11 @@
 
 # todo: check for valid args
 
+echo -e "\x1b[0;32m"
 echo "I just did the following for you:"
 echo "git commit -am $1"
 echo "git push"
+echo -e "\033[0m"
 
 git commit -am $1
 git push
