@@ -6,4 +6,3 @@ set incsearch
 set ignorecase
 set smartcase
 " imap jj <Esc>
-" imap <c-s> <esc>
