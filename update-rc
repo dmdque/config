@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# updates all runcoms
 cp ~/.vimrc ~/rc/.vimrc
 cp ~/.bashrc ~/rc/.bashrc
 cp /etc/rc.local ~/rc/rc.local
