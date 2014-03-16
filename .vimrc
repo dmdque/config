@@ -5,4 +5,4 @@ set tabstop=2 " sets tabs to be two spaces
 set incsearch
 set ignorecase
 set smartcase
-imap jj <Esc>
+" imap jj <Esc>
