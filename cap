@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# commit and push
+
+# todo: check for valid args
+
+git commit -am $1
+git push
+
+echo "I just did the following for you:"
+echo "git commit -am $1"
+echo "git push"

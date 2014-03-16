@@ -1,44 +1,17 @@
- ctrl+a or Home
-  
+ctrl+a or Home:   Moves the cursor to the start of a line.
 
-Moves the cursor to the start of a line.
+ctrl+e or End:    Moves the cursor to the end of a line.
 
-ctrl+e or End
-  
+esc+b:    Moves to the beginning of the previous or current word.
 
-Moves the cursor to the end of a line.
+ctrl+k:   Deletes from the current cursor position to the end of the line.
 
-esc+b
-  
+ctrl+u:   Deletes from the start of the line to the current cursor position.
 
-Moves to the beginning of the previous or current word.
+ctrl+w:   Deletes the word before the cursor.
 
-ctrl+k
-  
+alt+b:    Goes back one word at a time.
 
-Deletes from the current cursor position to the end of the line.
+alt+f:    Moves forward one word at a time.
 
-ctrl+u
-  
-
-Deletes from the start of the line to the current cursor position.
-
-ctrl+w
-  
-
-Deletes the word before the cursor.
-
-alt+b
-  
-
-Goes back one word at a time.
-
-alt+f
-  
-
-Moves forward one word at a time.
-
-alt+c
-  
-
-Capitalizes letter where cursor is and moves to end of word.
+alt+c:    Capitalizes letter where cursor is and moves to end of word.
