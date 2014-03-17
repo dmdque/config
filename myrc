@@ -1,0 +1,6 @@
+#!/bin/bash
+
+xset r rate 200 30;
+xset m 9/5 0.1;
+
+xmodmap ~/rc/cl-swap
