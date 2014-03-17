@@ -1,3 +1,4 @@
+TERMINAL
 ctrl+a or Home:   Moves the cursor to the start of a line.
 ctrl+e or End:    Moves the cursor to the end of a line.
 esc+b:    Moves to the beginning of the previous or current word.
@@ -7,3 +8,8 @@ ctrl+w:   Deletes the word before the cursor.
 alt+b:    Goes back one word at a time.
 alt+f:    Moves forward one word at a time.
 alt+c:    Capitalizes letter where cursor is and moves to end of word.
+
+VIM
+ctrl-G:   displays name of file
+ctrl-A:   goes to next number on same line and increments it
+ctrl-x:     decrements number

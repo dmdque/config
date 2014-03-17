@@ -6,3 +6,6 @@ set incsearch
 set ignorecase
 set smartcase
 " imap jj <Esc>
+
+" shows command
+set showcmd
