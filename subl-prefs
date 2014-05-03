@@ -1,0 +1,46 @@
+##packages
+
+{
+	"installed_packages":
+	[
+		"BracketHighlighter",
+		"GotoLastEdit",
+		"Jade",
+		"Origami",
+		"Package Control",
+		"SideBarEnhancements",
+		"Stylus"
+	],
+	"repositories":
+	[
+		"https://github.com/abrookins/GotoLastEdit"
+	]
+}
+
+##preferences
+
+{
+	"font_size": 14,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Jade"
+	],
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"vintage_ctrl_keys": true,
+	"vintage_start_in_command_mode": true
+}
+
+##keymappings
+
+[
+  { "keys": ["ctrl+tab"], "command": "next_view" },
+  { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
+  { "keys": ["ctrl+0"], "command": "reset_font_size"},
+  {
+    "keys": ["ctrl+'"],
+    "command": "goto_last_edit",
+    "context": [{"key": "setting.command_mode"}]
+  }
+]

@@ -8,18 +8,26 @@ ctrl-x:     decrements number
 crtl-z:   suspends
           fg from shell to return to foreground
 gh:       select mode
+<C-g>:    (from Visual Mode) select mode
 
 TERMINAL
 ctrl+a or Home:   Moves the cursor to the start of a line.
 ctrl+e or End:    Moves the cursor to the end of a line.
 esc+b:    Moves to the beginning of the previous or current word.
+esc+f:    Moves forward one word at a time. (same as alt+f)
 ctrl+k:   Deletes from the current cursor position to the end of the line.
 ctrl+u:   Deletes from the start of the line to the current cursor position.
 ctrl+w:   Deletes the word before the cursor.
 alt+b:    Goes back one word at a time.
-alt+f:    Moves forward one word at a time.
+alt+f:    Moves forward one word at a time. (this doesn't work due to the menu bar)
 alt+c:    Capitalizes letter where cursor is and moves to end of word.
+ctrl+/:   Undo
+esc+.:    insert last command
+ctrl+y:   paste text cut from ctrl+u/k
+alt+d:    deletes word (same as esc+d)
 
 ARCHIVED
 ========
 # for commands that have been mastered or dumped
+
+NOTE: consider adding "set -o vi" to .bashrc
