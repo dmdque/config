@@ -1,6 +1,6 @@
 #!/bin/bash
 
 # updates all runcoms
-cp ~/.vimrc ~/.myrc/.vimrc
-cp ~/.bashrc ~/.myrc/.bashrc
-cp /etc/rc.local ~/.myrc/rc.local
+cp ~/.vimrc ~/.myrcs/.vimrc
+cp ~/.bashrc ~/.myrcs/.bashrc
+cp /etc/rc.local ~/.myrcs/rc.local
