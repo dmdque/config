@@ -20,5 +20,10 @@ command -nargs=0 -bar Update if &modified
                            \|    endif
                            \|endif
 nnoremap <silent> <C-S> :<C-u>Update<CR>
+
+" highlights all instances of search string
 set hlsearch
-set clipboard^=unnamedplus
+
+" use same clipboard as OS
+" (need to compile vim with +clipboard for this to work)
+" set clipboard=unnamedplus
