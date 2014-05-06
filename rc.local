@@ -11,13 +11,4 @@
 #
 # By default this script does nothing.
 
-# sudo sh -c "
-
-echo 6 > /sys/class/backlight/acpi_video0/brightness;
-# xset m 9/5 0.1;
-xset r rate 200 30;
-# "\
-
-# echo 6 | tee /sys/class/backlight/acpi_video0/brightness
-
 exit 0
