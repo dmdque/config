@@ -1,0 +1,12 @@
+! add alt_r + hjkl keybindings
+keysym Alt_R = Mode_switch
+keycode 43 = h H Left H
+keycode 44 = j J Down J
+keycode 45 = k K Up K
+keycode 46 = l L Right L
+
+! switch esc and caps lock
+remove Lock = Caps_Lock
+add Lock = Escape
+keysym Caps_Lock = Escape
+keysym Escape = Caps_Lock
