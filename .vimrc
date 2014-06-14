@@ -27,3 +27,12 @@ set hlsearch
 " use same clipboard as OS
 " (need to compile vim with +clipboard for this to work)
 " set clipboard=unnamedplus
+
+" for plugin
+filetype plugin on
+
+" Make cw consistent with dw, yw, vw
+onoremap w :execute 'normal! '.v:count1.'w'<CR>
+
+" Allows mouse to be used
+set mouse=a
