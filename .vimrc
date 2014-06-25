@@ -10,7 +10,7 @@ set smartcase
 " shows command
 set showcmd
 
-" If the current buffer has never been saved, it will have no name,
+" if the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
 command -nargs=0 -bar Update if &modified 
                            \|    if empty(bufname('%'))
@@ -31,8 +31,17 @@ set hlsearch
 " for plugin
 filetype plugin on
 
-" Make cw consistent with dw, yw, vw
+" make cw consistent with dw, yw, vw
 onoremap w :execute 'normal! '.v:count1.'w'<CR>
 
-" Allows mouse to be used
-set mouse=a
+" allows mouse to be used
+set mouse=nv
+
+" stop auto line commenting
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" autoindenting
+set autoindent
+
+" use same clipboard as machine
+set clipboard=unnamedplus
