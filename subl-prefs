@@ -42,5 +42,15 @@
     "keys": ["ctrl+'"],
     "command": "goto_last_edit",
     "context": [{"key": "setting.command_mode"}]
+  },
+  {
+    "keys": ["s"], "command": "set_action_motion", "args": {
+    "action": "enter_insert_mode",
+    "action_args": {"insert_command": "right_delete"},
+    "motion": "expand_selection" },
+    "context": [{"key": "setting.command_mode"}]
+  },
+  { "keys": ["u"], "command": "undo",
+    "context": [{"key": "selection_empty", "operator": "equal", "operand": false}],
   }
 ]
