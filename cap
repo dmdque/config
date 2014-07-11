@@ -4,6 +4,8 @@
 
 # todo: check for valid args
 
+# usage: ./cap commit message (not sure about ")
+
 echo -e "\x1b[0;32m"
 echo "I just did the following for you:"
 echo "git commit -am \"$1\""

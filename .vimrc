@@ -5,10 +5,9 @@ set tabstop=2 " sets tabs to be two spaces
 set incsearch
 set ignorecase
 set smartcase
-" imap jj <Esc>
+" imap jj <Esc> " maps jj to esc (only want this in insert mode)
 
-" shows command
-set showcmd
+set showcmd " show commands in bottom right
 
 " if the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
@@ -21,27 +20,38 @@ command -nargs=0 -bar Update if &modified
                            \|endif
 nnoremap <silent> <C-S> :<C-u>Update<CR>
 
-" highlights all instances of search string
-set hlsearch
-
-" use same clipboard as OS
-" (need to compile vim with +clipboard for this to work)
-" set clipboard=unnamedplus
-
-" for plugin
-filetype plugin on
+set hlsearch " highlights all instances of search string
+filetype plugin on " for plugins
 
 " make cw consistent with dw, yw, vw
 onoremap w :execute 'normal! '.v:count1.'w'<CR>
 
-" allows mouse to be used
-set mouse=nv
+set mouse=nv " allows mouse to be used in normal and visual modes
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " stop auto line commenting
+set autoindent " autoindenting
+set clipboard=unnamedplus " use machine clipboard (need to compile vim with +clipboard for this to work)
+set runtimepath^=~/.vim/bundle/ctrlp.vim " for ctrlp. make sure to double check installation was done properly
+colorscheme blackboard
 
-" stop auto line commenting
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" settings for gvim
+"set guioptions-=m " remove menu bar
+set guioptions-=T " remove toolbar
+set guioptions-=r " remove right-hand scroll bar
+set guioptions-=L " remove left-hand scroll bar
 
-" autoindenting
-set autoindent
+execute pathogen#infect()
+" for pathogen plugin
 
-" use same clipboard as machine
-set clipboard=unnamedplus
+set wildignore+=*\/dist\/*
+set wildignore+=*\/test\/*
+
+" save similar to other programs
+" not working in tvim for some reason
+nnoremap <C-s> :update<CR>
+inoremap <C-s> <Esc>:update<CR>i
+
+" delete next word in insert mode
+inoremap <C-d> <Esc>dei
+
+"let g:ycm_min_num_of_chars_for_completion = 2
+"let g:ycm_min_num_identifier_candidate_chars = 1
