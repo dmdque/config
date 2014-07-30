@@ -48,10 +48,22 @@ set wildignore+=*\/test\/*
 " save similar to other programs
 " not working in tvim for some reason
 nnoremap <C-s> :update<CR>
-inoremap <C-s> <Esc>:update<CR>i
+inoremap <C-s> <Esc>:update<CR>li
 
 " delete next word in insert mode
-inoremap <C-d> <Esc>dei
+inoremap <C-d> <Esc>ldei
 
 "let g:ycm_min_num_of_chars_for_completion = 2
 "let g:ycm_min_num_identifier_candidate_chars = 1
+let g:ctrlp_working_path_mode = '0'
+
+au BufNewFile,BufRead *.ejs set filetype=html " ejs
+
+" select pasted text
+nnoremap gV `[v`]
+
+" make Y more like C and C
+nnoremap Y y$
+
+" yanks line and corresponding closing match
+nnoremap yY mzyy$%:let @+=@+.getline('.')."\n"<CR>`z
