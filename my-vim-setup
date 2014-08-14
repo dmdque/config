@@ -13,4 +13,5 @@ cd ~/.vim/bundle
 git clone https://github.com/nelstrom/vim-visual-star-search.git
 
 # colorscheme
+mkdir -p ~/.vim/colors
 curl -LSso ~/.vim/colors/blackboard.vim http://csclub.uwaterloo.ca/~dmdque/rc/blackboard.vim
