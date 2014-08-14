@@ -10,7 +10,7 @@ mkdir -p ~/.vim/bundle # not needed
 cd ~/.vim/bundle
 
 # visual-star
-git clone git@github.com:nelstrom/vim-visual-star-search.git
+git clone https://github.com/nelstrom/vim-visual-star-search.git
 
 # colorscheme
 curl -LSso ~/.vim/colors/blackboard.vim http://csclub.uwaterloo.ca/~dmdque/rc/blackboard.vim
