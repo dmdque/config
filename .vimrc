@@ -1,10 +1,10 @@
-set number " set nu
+set number " set line number
 set expandtab " turns tabs into spaces
 set shiftwidth=2 " for |<<| and |>>|
 set tabstop=2 " sets tabs to be two spaces
-set incsearch
-set ignorecase
-set smartcase
+set incsearch " highlights search as you type
+set ignorecase " ignores case for search
+set smartcase " turns off ignorecase if one or more uppercase letters are in the search query
 " imap jj <Esc> " maps jj to esc (only want this in insert mode)
 
 set showcmd " show commands in bottom right
@@ -41,9 +41,10 @@ set guioptions-=L " remove left-hand scroll bar
 
 execute pathogen#infect()
 " for pathogen plugin
+syntax on
 
 set wildignore+=*\/dist\/*
-set wildignore+=*\/test\/*
+"set wildignore+=*\/test\/*
 
 " save similar to other programs
 " not working in tvim for some reason
@@ -66,4 +67,10 @@ nnoremap gV `[v`]
 nnoremap Y y$
 
 " yanks line and corresponding closing match
+" assumes opening brace is on the same line as . and closing brace is on a different line
+" note: yY makes sense in terms of muscle memory, but not in terms of vim.
+" TODO: extend this to recursively yank for if-elseif blocks
+" TODO: maybe also copy to register "0? (since it's an explicit yank)
 nnoremap yY mzyy$%:let @+=@+.getline('.')."\n"<CR>`z
+
+set wildmenu " command line autocomplete menu
