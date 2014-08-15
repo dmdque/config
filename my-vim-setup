@@ -20,8 +20,9 @@ git clone https://github.com/scrooloose/nerdcommenter.git
 # visual-star
 git clone https://github.com/nelstrom/vim-visual-star-search.git
 
-#sudo apt-get install build-essential cmake
-#sudo apt-get install python-dev.
+# need to find a way to do on non admin-priv machine
+sudo apt-get install build-essential cmake
+sudo apt-get install python-dev.
 git clone https://github.com/Valloric/YouCompleteMe.git
 cd ~/.vim/bundle/YouCompleteMe
 git submodule update --init --recursive
