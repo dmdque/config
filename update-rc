@@ -2,5 +2,6 @@
 
 # updates all runcoms
 cp ~/.vimrc ~/.myrcs/.vimrc
+cp ~/.gvimrc ~/.myrcs/.gvimrc
 cp ~/.bashrc ~/.myrcs/.bashrc
 cp /etc/rc.local ~/.myrcs/rc.local

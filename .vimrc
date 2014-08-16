@@ -31,7 +31,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "
 set autoindent " autoindenting
 set clipboard=unnamedplus " use machine clipboard (need to compile vim with +clipboard for this to work)
 set runtimepath^=~/.vim/bundle/ctrlp.vim " for ctrlp. make sure to double check installation was done properly
-colorscheme blackboard
 
 " settings for gvim
 "set guioptions-=m " remove menu bar
@@ -74,3 +73,4 @@ nnoremap Y y$
 nnoremap yY mzyy$%:let @+=@+.getline('.')."\n"<CR>`z
 
 set wildmenu " command line autocomplete menu
+runtime macros/matchit.vim
