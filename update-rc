@@ -3,5 +3,6 @@
 # updates all runcoms
 cp ~/.vimrc ~/.myrcs/.vimrc
 cp ~/.gvimrc ~/.myrcs/.gvimrc
+cp ~/.tmux.conf ~/.myrcs/.tmux.conf
 cp ~/.bashrc ~/.myrcs/.bashrc
 cp /etc/rc.local ~/.myrcs/rc.local
