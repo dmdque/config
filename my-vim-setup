@@ -1,3 +1,6 @@
+# get curl if doesn't already have
+sudo apt-get install curl
+
 # get ~/.vimrc
 curl -LSso ~/.vimrc http://csclub.uwaterloo.ca/~dmdque/rc/.myrcs/.vimrc
 
