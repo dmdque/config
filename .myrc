@@ -1,2 +1,2 @@
-xmodmap ~/.xmodmap
-bash ~/xset;
+xmodmap ~/.myrcs/.xmodmap
+bash ~/.myrcs/.xset;

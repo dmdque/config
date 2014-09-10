@@ -6,3 +6,6 @@ cp ~/.gvimrc ~/.myrcs/.gvimrc
 cp ~/.tmux.conf ~/.myrcs/.tmux.conf
 cp ~/.bashrc ~/.myrcs/.bashrc
 cp /etc/rc.local ~/.myrcs/rc.local
+cp ~/.myrc ~/.myrcs/.myrc
+cp ~/.xset ~/.myrcs/.xset
+cp ~/.xmodmap ~/.myrcs/.xmodmap
