@@ -1,3 +1,77 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'kien/ctrlp.vim'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'groenewege/vim-less'
+Plugin 'nelstrom/vim-visual-star-search'
+Plugin 'scrooloose/nerdtree'
+
+Plugin 'sjl/gundo.vim'
+  noremap <silent> <F4> :GundoToggle<CR>
+
+Plugin 'Lokaltog/vim-easymotion'
+  map <Tab> <Plug>(easymotion-prefix)
+  "let g:EasyMotion_mapping_f='<Tab>l'
+  "let g:EasyMotion_mapping_F='<Tab>h'
+  "let g:EasyMotion_mapping_w='<Tab><S-l>'
+  "let g:EasyMotion_mapping_W='<Tab><S-h>'
+  "let g:EasyMotion_mapping_j='<Tab>j'
+  "let g:EasyMotion_mapping_k='<Tab>k'
+
+" converts text into super nice math
+"Plugin 'enomsg/vim-haskellConcealPlus'
+
+" execute code in shell
+Plugin 'jgdavey/tslime.vim'
+
+"" The following are examples of different formats supported.
+"" Keep Plugin commands between vundle#begin/end.
+"" plugin on GitHub repo
+"Plugin 'tpope/vim-fugitive'
+"" plugin from http://vim-scripts.org/vim/scripts.html
+"Plugin 'L9'
+"" Git plugin not hosted on GitHub
+"Plugin 'git://git.wincent.com/command-t.git'
+"" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+"" The sparkup vim script is in a subdirectory of this repo called vim.
+"" Pass the path to set the runtimepath properly.
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"" Avoid a name conflict with L9
+"Plugin 'user/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
+
+
+
+
+
 set number " set line number
 set expandtab " turns tabs into spaces
 set shiftwidth=2 " for |<<| and |>>|
@@ -30,7 +104,6 @@ set mouse=nv " allows mouse to be used in normal and visual modes
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " stop auto line commenting
 set autoindent " autoindenting
 set clipboard=unnamedplus " use machine clipboard (need to compile vim with +clipboard for this to work)
-set runtimepath^=~/.vim/bundle/ctrlp.vim " for ctrlp. make sure to double check installation was done properly
 
 " settings for gvim
 "set guioptions-=m " remove menu bar
@@ -38,16 +111,11 @@ set guioptions-=T " remove toolbar
 set guioptions-=r " remove right-hand scroll bar
 set guioptions-=L " remove left-hand scroll bar
 
-execute pathogen#infect()
-" for pathogen plugin
-syntax on
-
-set wildignore+=*\/dist\/*
-"set wildignore+=*\/test\/*
-
 " save similar to other programs
 " not working in tvim for some reason
 nnoremap <C-s> :update<CR>
+
+" bug for when cursor is at end of line
 inoremap <C-s> <Esc>:update<CR>li
 
 " delete next word in insert mode
@@ -72,5 +140,25 @@ nnoremap Y y$
 " TODO: maybe also copy to register "0? (since it's an explicit yank)
 nnoremap yY mzyy$%:let @+=@+.getline('.')."\n"<CR>`z
 
-set wildmenu " command line autocomplete menu
+" Plugin stuff
+"set runtimepath^=~/.vim/bundle/ctrlp.vim " for ctrlp. make sure to double check installation was done properly
+"execute pathogen#infect()
+" for pathogen plugin
+syntax on
+
+" CtrlP stuff
+set wildignore+=*\/dist\/*
+set wildignore+=*\/test\/*
+
 runtime macros/matchit.vim
+
+set wildmenu " command line autocomplete menu
+
+nnoremap n nzz
+nnoremap N Nzz
+
+nnoremap <Del> "_x
+
+" for english
+set spelllang=en_ca
+set spell

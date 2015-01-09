@@ -115,8 +115,12 @@ fi
 
 # sets vim-style editing
 # set -o emacs
-# set -o vi
+set -o vi
 
 export NVM_DIR="$HOME/.nvm"
 source $HOME/.nvm/nvm.sh
 nvm use 0.10.29
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+tmux
