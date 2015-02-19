@@ -16,6 +16,13 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'groenewege/vim-less'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'scrooloose/nerdtree'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+
+" for ejs
+Plugin 'pangloss/vim-javascript'
+Plugin 'briancollins/vim-jst'
+
 
 Plugin 'sjl/gundo.vim'
   noremap <silent> <F4> :GundoToggle<CR>
@@ -162,3 +169,10 @@ nnoremap <Del> "_x
 " for english
 set spelllang=en_ca
 set spell
+
+colorscheme blackboard
+"set background=dark
+highlight clear SignColumn " to look good with gitgutter
+set updatetime=750
+
+autocmd VimEnter * GitGutterLineHighlightsEnable
