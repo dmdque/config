@@ -18,6 +18,7 @@ Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'mileszs/ack.vim'
 
 " for ejs
 Plugin 'pangloss/vim-javascript'
@@ -81,8 +82,8 @@ filetype plugin indent on    " required
 
 set number " set line number
 set expandtab " turns tabs into spaces
-set shiftwidth=2 " for |<<| and |>>|
-set tabstop=2 " sets tabs to be two spaces
+set shiftwidth=4 " for |<<| and |>>|
+set tabstop=4 " sets tabs to be two spaces
 set incsearch " highlights search as you type
 set ignorecase " ignores case for search
 set smartcase " turns off ignorecase if one or more uppercase letters are in the search query
@@ -110,7 +111,10 @@ onoremap w :execute 'normal! '.v:count1.'w'<CR>
 set mouse=nv " allows mouse to be used in normal and visual modes
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " stop auto line commenting
 set autoindent " autoindenting
-set clipboard=unnamedplus " use machine clipboard (need to compile vim with +clipboard for this to work)
+" for ubuntu systems
+"set clipboard=unnamedplus " use machine clipboard (need to compile vim with +clipboard for this to work)
+" for mac systems
+set clipboard=unnamed " use machine clipboard (need to compile vim with +clipboard for this to work)
 
 " settings for gvim
 "set guioptions-=m " remove menu bar
@@ -175,4 +179,8 @@ colorscheme blackboard
 highlight clear SignColumn " to look good with gitgutter
 set updatetime=750
 
-autocmd VimEnter * GitGutterLineHighlightsEnable
+"autocmd VimEnter * GitGutterLineHighlightsEnable
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
