@@ -82,8 +82,11 @@ filetype plugin indent on    " required
 
 set number " set line number
 set expandtab " turns tabs into spaces
-set shiftwidth=4 " for |<<| and |>>|
-set tabstop=4 " sets tabs to be two spaces
+" general preference
+set shiftwidth=2 " for |<<| and |>>|
+set tabstop=2 " sets tabs to be two spaces
+"set shiftwidth=4 " for |<<| and |>>|
+"set tabstop=4 " sets tabs to be two spaces
 set incsearch " highlights search as you type
 set ignorecase " ignores case for search
 set smartcase " turns off ignorecase if one or more uppercase letters are in the search query
@@ -184,3 +187,10 @@ set updatetime=750
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+"fixes vim backspace in zsh
+  "value	effect
+    "0	same as ":set backspace=" (Vi compatible)
+    "1	same as ":set backspace=indent,eol"
+    "2	same as ":set backspace=indent,eol,start"
+set backspace=2

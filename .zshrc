@@ -89,3 +89,23 @@ set -o vi
 # bindkey '^R' history-incremental-search-backward
 # better
 bindkey '^R' history-incremental-pattern-search-backward
+
+# adds ctrl p in zsh
+ctrlp() {
+  </dev/tty vim -c CtrlP
+}
+zle -N ctrlp
+
+bindkey "^p" ctrlp
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# don't know what these two do, but they're from an archived mailing list with good suggestions
+#autoload -Uz edit-command-line
+#zle -N edit-command-line
+
+# sets 'v' to vim command edit, as it should and does in bash
+bindkey -M vicmd 'v' edit-command-line
+
+# fix backspace in zsh
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
