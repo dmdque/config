@@ -133,3 +133,6 @@ bindkey '^f' vi-forward-word
 #bindkey '^f' vi-forward-blank-word
 bindkey '^e' end-of-line
 bindkey '^a' beginning-of-line
+
+# for ubuntu shell
+AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=3'
