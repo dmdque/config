@@ -109,3 +109,24 @@ bindkey -M vicmd 'v' edit-command-line
 # fix backspace in zsh
 bindkey '^?' backward-delete-char
 bindkey '^H' backward-delete-char
+
+# Setup zsh-autosuggestions
+source /Users/danielq/.zsh-autosuggestions/autosuggestions.zsh
+
+# Enable autosuggestions automatically
+zle-line-init() {
+    zle autosuggest-start
+}
+
+zle -N zle-line-init
+
+# use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
+# zsh-autosuggestions is designed to be unobtrusive)
+bindkey '^T' autosuggest-toggle
+
+# Accept suggestions without leaving insert mode
+bindkey '^f' vi-forward-word
+# or
+#bindkey '^f' vi-forward-blank-word
+bindkey '^e' end-of-line
+bindkey '^a' beginning-of-line
