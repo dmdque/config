@@ -182,6 +182,9 @@ colorscheme blackboard
 highlight clear SignColumn " to look good with gitgutter
 set updatetime=750
 
+" to look good with gitgutter in ubuntu
+"autocmd VimEnter * highlight clear SignColumn
+
 "autocmd VimEnter * GitGutterLineHighlightsEnable
 
 if executable('ag')

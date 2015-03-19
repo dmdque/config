@@ -82,7 +82,10 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.nvm/nvm.sh
 nvm use stable
-alias vim='/usr/local/bin/vim'
+
+# for macbook
+#alias vim='/usr/local/bin/vim'
+
 # sets vim-style editing
 # set -o emacs
 set -o vi
