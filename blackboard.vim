@@ -36,6 +36,7 @@ if has("gui_running")
   highlight clear Search
   highlight Search guibg=#1C3B79
   highlight PreProc guifg=#FF5600
+  highlight clear SignColumn
 
   "HTML Colors
   highlight link htmlTag Type
