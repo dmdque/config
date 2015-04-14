@@ -1,11 +1,10 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" my plugins
+Plugin 'file:///Users/danielq/projects/git/cubetime.vim'
+"Bundle '~/path/your-plugin/.git'
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
@@ -17,22 +16,24 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'sjl/gundo.vim' " Thanks to Dave
 "Plugin 'enomsg/vim-haskellConcealPlus' " converts text into super nice math
 Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Shougo/vimproc'
+"Plugin 'tpope/vim-fugitive'
+Plugin 'Shougo/vimproc.vim'
 Plugin 'mileszs/ack.vim'
-Plugin 'Shougo/vimshell'
+"Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-Plugin 'Shougo/neosnippet.vim'
+"Plugin 'Shougo/neosnippet.vim'
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'vim-jp/vital.vim'
+Plugin 'morhetz/gruvbox'
 
 "Plugin 'jgdavey/tslime.vim' " execute code in shell
+" ctrlsf?
 " TO INSTALL
 "quickrun
 "caw
 "xsurround
-"neosnippet
 "quicklearn
 "calendar
 
@@ -45,6 +46,11 @@ Plugin 'briancollins/vim-jst'
 Plugin 'derekwyatt/vim-scala'
 
 noremap <silent> <F4> :GundoToggle<CR>
+
+" incsearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 " Easymotion
 map <Tab> <Plug>(easymotion-prefix)
@@ -61,44 +67,17 @@ nmap <Tab>b <Plug>(easymotion-bd-w)
 nnoremap <C-k> <Tab> " since <C-i> isn't working
 "nnoremap <nowait> <C-i> <Tab>
 
-"" The following are examples of different formats supported.
-"" Keep Plugin commands between vundle#begin/end.
-"" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-"" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-"" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-"" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-"" The sparkup vim script is in a subdirectory of this repo called vim.
-"" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-"" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
+call vundle#end()
+filetype plugin indent on
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
+let mapleader = " "
 set number " set line number
 set expandtab " turns tabs into spaces
 " general preference
-set shiftwidth=2 " for |<<| and |>>|
-set tabstop=2 " sets tabs to be two spaces
-"set shiftwidth=4 " for |<<| and |>>|
-"set tabstop=4 " sets tabs to be two spaces
+"set shiftwidth=2 " for |<<| and |>>|
+"set tabstop=2 " sets tabs to be two spaces
+set shiftwidth=4 " for |<<| and |>>|
+set tabstop=4 " sets tabs to be two spaces
 set incsearch " highlights search as you type
 set ignorecase " ignores case for search
 set smartcase " turns off ignorecase if one or more uppercase letters are in the search query
@@ -115,7 +94,6 @@ set showcmd " show commands in bottom right
                            "\|        confirm write
                            "\|    endif
                            "\|endif
-nnoremap <silent> <C-S> :<C-u>Update<CR>
 
 set hlsearch " highlights all instances of search string
 filetype plugin on " for plugins
@@ -138,18 +116,14 @@ set guioptions-=r " remove right-hand scroll bar
 set guioptions-=L " remove left-hand scroll bar
 
 " save similar to other programs
-" not working in tvim for some reason
-nnoremap <C-s> :update<CR>
+" not working in gvim for some reason
+nnoremap <C-s> :<C-u>update<CR>
 
 " bug for when cursor is at end of line
 inoremap <C-s> <Esc>:update<CR>li
 
 " delete next word in insert mode
 inoremap <C-d> <Esc>ldei
-
-"let g:ycm_min_num_of_chars_for_completion = 2
-"let g:ycm_min_num_identifier_candidate_chars = 1
-let g:ctrlp_working_path_mode = '0'
 
 au BufNewFile,BufRead *.ejs set filetype=html " ejs
 
@@ -181,10 +155,6 @@ nnoremap yY :<C-u>call <SID>yankshell()<Cr>
 
 syntax on
 
-" CtrlP
-set wildignore+=*\/dist\/*
-set wildignore+=*\/test\/*
-
 runtime macros/matchit.vim
 
 set wildmenu " command line autocomplete menu
@@ -199,7 +169,10 @@ nnoremap <Del> "_x
 set spelllang=en_ca
 set spell
 
+" gruvbox better for terminal
+" for some reason, only works if both are set sequentially
 colorscheme blackboard
+colorscheme gruvbox
 
 " GitGutter
 highlight clear SignColumn " to look good with gitgutter
@@ -263,27 +236,63 @@ set tw=0 " prevent auto line breaks
 
 " neosnippet
 " Plugin key-mappings.
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
+"imap <C-k> <Plug>(neosnippet_expand_or_jump)
+"smap <C-k> <Plug>(neosnippet_expand_or_jump)
+"xmap <C-k> <Plug>(neosnippet_expand_target)
 
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
+"" SuperTab like snippets behavior.
+"imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"\ "\<Plug>(neosnippet_expand_or_jump)"
+"\: pumvisible() ? "\<C-n>" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"\ "\<Plug>(neosnippet_expand_or_jump)"
+"\: "\<TAB>"
 
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
-" incsearch
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+"" For neosnippet
+"if has('conceal')
+  "set conceallevel=2 concealcursor=i
+"endif
 
 " for behaviour similar to 'C', 'D', 'Y'
-nnoremap <Leader>V vg_
+nnoremap <Leader>v vg_
+
+"" cube timer plugin begin
+"let s:timerRunFlag = 0
+"let g:timesList = []
+"function! s:toggle_timer()
+  "if s:timerRunFlag == 0
+    "let s:timerRunFlag = 1
+    "let s:starttime = reltime()
+  "else
+    "let g:endtime = split(reltimestr(reltime(s:starttime)))[0] " split used to remove leading space, as suggested by :h
+    "let s:timerRunFlag = 0
+    "let g:timesList += [g:endtime]
+    "echo "time: " . g:endtime . ", mean of " . len(g:timesList) . ": " . printf('%f', g:ao5(g:timesList))
+
+  "endif
+"endfunction
+
+"function! g:ao5(timeList)
+  "" TODO:
+    "" tail 5
+    "" exclude best and worst
+    "" use vital's foldl
+  "let s:sum = 0.0
+  "for item in a:timeList
+    "let s:sum = s:sum + str2float(item)
+  "endfor
+  "return s:sum / len(a:timeList)
+"endfunction
+
+"nnoremap <Space><Space> :<C-u>call <SID>toggle_timer()<Cr>
+"" cube timer plugin end
+
+" cubetimer
+
+" CtrlP
+let g:ctrlp_max_depth = 20
+let g:ctrlp_max_files = 40000
+let g:ctrlp_working_path_mode = '0' " for CtrlP local working directory
+let g:ctrlp_custom_ignore = {
+  \ 'dir': 'tnoodle\|node_modules\|dist'
+  \ }
