@@ -2,10 +2,6 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" my plugins
-Plugin 'file:///Users/danielq/projects/git/cubetime.vim'
-"Bundle '~/path/your-plugin/.git'
-
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
@@ -16,7 +12,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'sjl/gundo.vim' " Thanks to Dave
 "Plugin 'enomsg/vim-haskellConcealPlus' " converts text into super nice math
 Plugin 'airblade/vim-gitgutter'
-"Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'mileszs/ack.vim'
 "Plugin 'Shougo/vimshell.vim'
@@ -27,6 +23,14 @@ Plugin 'tpope/vim-repeat'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'vim-jp/vital.vim'
 Plugin 'morhetz/gruvbox'
+"Plugin 'jaxbot/selective-undo.vim' " very buggy plugin
+Plugin 'kana/vim-operator-user'
+Plugin 'kana/vim-operator-replace'
+
+" my plugins
+Plugin 'file:///Users/danielq/projects/git/cubetime.vim'
+"Bundle '~/path/your-plugin/.git'
+"Bundle '/Users/danielq/projects/git/cubetime.vim/.git' " ?? works?
 
 "Plugin 'jgdavey/tslime.vim' " execute code in shell
 " ctrlsf?
@@ -48,8 +52,8 @@ Plugin 'derekwyatt/vim-scala'
 noremap <silent> <F4> :GundoToggle<CR>
 
 " incsearch
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
 " Easymotion
@@ -120,7 +124,7 @@ set guioptions-=L " remove left-hand scroll bar
 nnoremap <C-s> :<C-u>update<CR>
 
 " bug for when cursor is at end of line
-inoremap <C-s> <Esc>:update<CR>li
+inoremap <C-s> <Esc>:update<CR>a
 
 " delete next word in insert mode
 inoremap <C-d> <Esc>ldei
@@ -172,7 +176,7 @@ set spell
 " gruvbox better for terminal
 " for some reason, only works if both are set sequentially
 colorscheme blackboard
-colorscheme gruvbox
+"colorscheme gruvbox
 
 " GitGutter
 highlight clear SignColumn " to look good with gitgutter
@@ -294,5 +298,13 @@ let g:ctrlp_max_depth = 20
 let g:ctrlp_max_files = 40000
 let g:ctrlp_working_path_mode = '0' " for CtrlP local working directory
 let g:ctrlp_custom_ignore = {
-  \ 'dir': 'tnoodle\|node_modules\|dist'
+  \ 'dir': 'tnoodle\|node_modules\|dist',
+  \ 'file': '.*\.png'
   \ }
+
+" highlights trailing spaces
+set listchars=tab:>-,trail:_ list
+
+" operator-replace
+" just use g@ instead
+map _ <Plug>(operator-replace)
