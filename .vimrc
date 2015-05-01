@@ -26,6 +26,7 @@ Plugin 'morhetz/gruvbox'
 "Plugin 'jaxbot/selective-undo.vim' " very buggy plugin
 Plugin 'kana/vim-operator-user'
 Plugin 'kana/vim-operator-replace'
+Plugin 'tpope/vim-unimpaired'
 
 " my plugins
 Plugin 'file:///Users/danielq/projects/git/cubetime.vim'
@@ -61,12 +62,6 @@ map <Tab> <Plug>(easymotion-prefix)
 nmap <Tab>/ <Plug>(easymotion-sn)
 nmap <Tab>w <Plug>(easymotion-w)
 nmap <Tab>b <Plug>(easymotion-bd-w)
-"let g:EasyMotion_mapping_f='<Tab>l'
-"let g:EasyMotion_mapping_F='<Tab>h'
-"let g:EasyMotion_mapping_w='<Tab><S-l>'
-"let g:EasyMotion_mapping_W='<Tab><S-h>'
-"let g:EasyMotion_mapping_j='<Tab>j'
-"let g:EasyMotion_mapping_k='<Tab>k'
 
 nnoremap <C-k> <Tab> " since <C-i> isn't working
 "nnoremap <nowait> <C-i> <Tab>
@@ -88,16 +83,6 @@ set smartcase " turns off ignorecase if one or more uppercase letters are in the
 " imap jj <Esc> " maps jj to esc (only want this in insert mode) " maybe jlj like uji?
 
 set showcmd " show commands in bottom right
-
-" if the current buffer has never been saved, it will have no name,
-" call the file browser to save it, otherwise just save it.
-"command -nargs=0 -bar Update if &modified 
-                           "\|    if empty(bufname('%'))
-                           "\|        browse confirm write
-                           "\|    else
-                           "\|        confirm write
-                           "\|    endif
-                           "\|endif
 
 set hlsearch " highlights all instances of search string
 filetype plugin on " for plugins
@@ -127,7 +112,7 @@ nnoremap <C-s> :<C-u>update<CR>
 inoremap <C-s> <Esc>:update<CR>a
 
 " delete next word in insert mode
-inoremap <C-d> <Esc>ldei
+inoremap <C-d> <Esc>l"_dei
 
 au BufNewFile,BufRead *.ejs set filetype=html " ejs
 
@@ -215,23 +200,6 @@ endif
 if globpath(&rtp, 'plugin/unite.vim') != ''
   " make it hard to invoke accidentally
   nnoremap <Leader>P :<C-u>Unite file_rec/async:! -default-action=split -direction=rightbelow<Cr>
-  "nnoremap s <Nop>
-  "nnoremap ss :<C-u>Unite file_rec -default-action=split -direction=rightbelow<Cr>
-  "nnoremap sS :<C-u>Unite file_rec/async:! -default-action=split -direction=rightbelow<Cr>
-  "nnoremap se :<C-u>Unite file_rec/async<Cr>
-  "nnoremap so :<C-u>Unite outline -auto-preview -buffer-name=outline<Cr>
-  "nnoremap sc :<C-u>Unite colorscheme font -auto-preview<Cr>
-  "nnoremap sf :<C-u>UniteWithBufferDir file_rec -default-action=split<Cr>
-  "nnoremap sm :<C-u>Unite file_mru -default-action=split<Cr>
-  "nnoremap sb :<C-u>Unite buffer -default-action=split<Cr>
-  "nnoremap sre :<C-u>Unite ref/man ref/hoogle ref/pydoc -default-action=split<Cr>
-  "nnoremap su :<C-u>Unite history/command source command<Cr>
-  "nnoremap sp :<C-u>Unite process -no-split -buffer-name=process<Cr>
-  "nnoremap sq :<C-u>UniteClose build<Cr>
-  "nnoremap <space>R :<C-u>Unite quicklearn -immediately<Cr>
-
-  "nnoremap <space>M :Unite -buffer-name=build -no-focus build::
-  "nnoremap <space>m :<C-u>write<Cr>:Unite -buffer-name=build -no-focus build:<Cr>
 endif
 
 nnoremap <Leader>rc :vsp ~/.vimrc<CR>
@@ -261,39 +229,6 @@ set tw=0 " prevent auto line breaks
 " for behaviour similar to 'C', 'D', 'Y'
 nnoremap <Leader>v vg_
 
-"" cube timer plugin begin
-"let s:timerRunFlag = 0
-"let g:timesList = []
-"function! s:toggle_timer()
-  "if s:timerRunFlag == 0
-    "let s:timerRunFlag = 1
-    "let s:starttime = reltime()
-  "else
-    "let g:endtime = split(reltimestr(reltime(s:starttime)))[0] " split used to remove leading space, as suggested by :h
-    "let s:timerRunFlag = 0
-    "let g:timesList += [g:endtime]
-    "echo "time: " . g:endtime . ", mean of " . len(g:timesList) . ": " . printf('%f', g:ao5(g:timesList))
-
-  "endif
-"endfunction
-
-"function! g:ao5(timeList)
-  "" TODO:
-    "" tail 5
-    "" exclude best and worst
-    "" use vital's foldl
-  "let s:sum = 0.0
-  "for item in a:timeList
-    "let s:sum = s:sum + str2float(item)
-  "endfor
-  "return s:sum / len(a:timeList)
-"endfunction
-
-"nnoremap <Space><Space> :<C-u>call <SID>toggle_timer()<Cr>
-"" cube timer plugin end
-
-" cubetimer
-
 " CtrlP
 let g:ctrlp_max_depth = 20
 let g:ctrlp_max_files = 40000
@@ -307,5 +242,13 @@ let g:ctrlp_custom_ignore = {
 set listchars=tab:>-,trail:_ list
 
 " operator-replace
+" replace text without clobbering paste register
 " just use g@ instead
 map _ <Plug>(operator-replace)
+
+nnoremap <C-F> :<C-u>Unite grep<CR>
+
+" rough (shouldn't use v)
+" jump to '{' of container {} block
+nnoremap [{ va{%<Esc>
+nnoremap [} va{<Esc>
