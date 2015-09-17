@@ -1,0 +1,29 @@
+# Requires:
+# - vim 7.4
+# - curl
+# - git
+# - cmake
+# - vimrc
+
+# Get vimrc
+curl https://raw.githubusercontent.com/dmdque/config/master/.vimrc -o ~/.vimrc
+
+# Setup blackboard colourscheme
+mkdir -p ~/.vim/colors/
+curl https://raw.githubusercontent.com/dmdque/config/master/blackboard.vim -o ~/.vim/colors/blackboard.vim
+
+# Setup Vundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# Install plugins
+vim -c 'PluginInstall' -c 'qa!'
+
+# Build YouCompleteMe
+~/.vim/bundle/YouCompleteMe/install.py
+
+# Build vimproc
+cd ~/.vim/bundle/vimproc.vim
+make
+
+# Go back home
+cd ~

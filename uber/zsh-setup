@@ -1,0 +1,13 @@
+# Requirements:
+# - git
+# - curl
+
+# Download zshrc
+#curl
+
+# Setup oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# it would be nice to have this, but autosuggestions conflicts with it :( https://github.com/junegunn/fzf
+
+git clone git://github.com/tarruda/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
