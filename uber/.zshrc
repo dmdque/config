@@ -106,3 +106,6 @@ bindkey '^R' history-incremental-pattern-search-backward
 #bindkey '^?' backward-delete-char
 #bindkey '^H' backward-delete-char
 AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=3'
+function cx {
+    cd "$@" && ls
+}
