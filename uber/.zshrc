@@ -1,7 +1,7 @@
-# TODO!!! uncomment this part
-## Path to your oh-my-zsh installation.
-#export ZSH=/Users/danielque/.oh-my-zsh
+# Path to your oh-my-zsh installation.
+export ZSH=~/.oh-my-zsh
 
+source ~/.localrc
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -83,10 +83,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# ONLY FOR LOCAL MAC
-#alias vim='/usr/local/Cellar/vim/7.4.826/bin/vim'
-
 # Load zsh-autosuggestions.
 source ~/.zsh/zsh-autosuggestions/autosuggestions.zsh
 
