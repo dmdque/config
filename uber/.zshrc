@@ -96,16 +96,26 @@ zle-line-init() {
 }
 zle -N zle-line-init
 
+AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=3'
+
+
+set -o vi
+bindkey '^e' end-of-line
+bindkey '^a' beginning-of-line
 bindkey '^R' history-incremental-pattern-search-backward
 
-#set -o vi
-#bindkey '^e' end-of-line
-#bindkey '^a' beginning-of-line
-
 ## fix backspace in zsh
-#bindkey '^?' backward-delete-char
-#bindkey '^H' backward-delete-char
-AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=3'
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
 function cx {
     cd "$@" && ls
 }
+
+source /usr/local/bin/virtualenvwrapper.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey "\e[3~" delete-char
+
+# Aliases
+# must be exuberant ctags
+alias ctg='ctags -R .'
