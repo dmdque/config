@@ -27,6 +27,7 @@ Plugin 'morhetz/gruvbox'
 Plugin 'kana/vim-operator-user'
 Plugin 'kana/vim-operator-replace'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'nvie/vim-flake8'
 
 " my plugins
 "Plugin 'file:///Users/danielq/projects/git/cubetime.vim'
@@ -255,3 +256,5 @@ nnoremap [} va{<Esc>
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 set scrolloff=3 " Keep 3 lines above and below cursor
+
+let g:flake8_cmd='/usr/local/bin/flake8'
