@@ -246,7 +246,7 @@ set listchars=tab:>-,trail:_ list
 " just use g@ instead
 map _ <Plug>(operator-replace)
 
-nnoremap <C-F> :<C-u>Unite grep<CR>
+nnoremap <C-F> :<C-u>Unite grep<CR><CR>
 
 " rough (shouldn't use v)
 " jump to '{' of container {} block
@@ -254,3 +254,4 @@ nnoremap [{ va{%<Esc>
 nnoremap [} va{<Esc>
 
 nnoremap <C-n> :NERDTreeToggle<CR>
+set scrolloff=3 " Keep 3 lines above and below cursor
