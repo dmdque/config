@@ -22,13 +22,15 @@ Plugin 'tpope/vim-repeat'
 "Plugin 'Shougo/neosnippet.vim'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'vim-jp/vital.vim'
-Plugin 'morhetz/gruvbox'
 "Plugin 'jaxbot/selective-undo.vim' " very buggy plugin
 Plugin 'kana/vim-operator-user'
 Plugin 'kana/vim-operator-replace'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'nvie/vim-flake8'
 
+" Colourschemes
+Plugin 'morhetz/gruvbox'
+Plugin 'freeo/vim-kalisi'
 " my plugins
 "Plugin 'file:///Users/danielq/projects/git/cubetime.vim'
 "Bundle '~/path/your-plugin/.git'
@@ -255,6 +257,9 @@ nnoremap [{ va{%<Esc>
 nnoremap [} va{<Esc>
 
 nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-m> :NERDTreeFind<CR>
 set scrolloff=3 " Keep 3 lines above and below cursor
 
 let g:flake8_cmd='/usr/local/bin/flake8'
+
+set t_ut= " fix vim in tmux on osx
