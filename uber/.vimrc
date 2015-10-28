@@ -256,10 +256,18 @@ nnoremap <C-F> :<C-u>Unite grep<CR><CR>
 nnoremap [{ va{%<Esc>
 nnoremap [} va{<Esc>
 
+" NERDTree bindings
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-m> :NERDTreeFind<CR>
-set scrolloff=3 " Keep 3 lines above and below cursor
+
+" Keep 3 lines above and below cursor
+set scrolloff=3
 
 let g:flake8_cmd='/usr/local/bin/flake8'
 
-set t_ut= " fix vim in tmux on osx
+" fix vim in tmux on osx
+set t_ut=
+
+" make n/N direction consistent
+nnoremap <expr> n 'Nn'[v:searchforward]
+nnoremap <expr> N 'nN'[v:searchforward]
