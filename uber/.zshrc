@@ -55,6 +55,7 @@ plugins=(git)
 # User configuration
 
 export PATH="/Users/danielque/.nvm/v0.10.26/bin:/usr/local/sbin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/danielque/bin"
+PATH=$PATH:~/local/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

@@ -190,6 +190,13 @@ set backspace=2
 
 let g:unite_source_grep_max_candidates = 50000
 
+
+"" grep if no ag options
+"let g:unite_source_rec_ignore_pattern = 'env'
+"call unite#sources#rec#define()
+"call unite#custom#source('file_rec/async,file_mru,file,buffer,grep', 'ignore_pattern', g:unite_source_rec_ignore_pattern)
+
+
 " from uji
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
@@ -197,6 +204,13 @@ if executable('ag')
         \ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
         \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' --ignore tags'
   let g:unite_source_grep_recursive_opt = ''
+elseif executable('ack-grep')
+    " Use ack in unite grep source.
+    let g:unite_source_grep_command = 'ack-grep'
+    let g:unite_source_grep_default_opts =
+                \ '-i --no-heading --no-color -H ' .
+                \ '--ignore-dir="env"'
+    let g:unite_source_grep_recursive_opt = ''
 endif
 
 " also from uji
@@ -258,7 +272,7 @@ nnoremap [} va{<Esc>
 
 " NERDTree bindings
 nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <C-m> :NERDTreeFind<CR>
+nnoremap <C-N> :NERDTreeFind<CR>
 
 " Keep 3 lines above and below cursor
 set scrolloff=3
