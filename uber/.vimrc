@@ -272,7 +272,7 @@ nnoremap [} va{<Esc>
 
 " NERDTree bindings
 nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <C-N> :NERDTreeFind<CR>
+nnoremap <C-j> :NERDTreeFind<CR>
 
 " Keep 3 lines above and below cursor
 set scrolloff=3
