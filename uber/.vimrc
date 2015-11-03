@@ -76,30 +76,41 @@ let mapleader = " "
 set number " set line number
 set expandtab " turns tabs into spaces
 " general preference
-"set shiftwidth=2 " for |<<| and |>>|
-"set tabstop=2 " sets tabs to be two spaces
-set shiftwidth=4 " for |<<| and |>>|
-set tabstop=4 " sets tabs to be two spaces
+set shiftwidth=2 " for |<<| and |>>|
+set tabstop=2 " sets tabs to be two spaces
+"set shiftwidth=4 " for |<<| and |>>|
+"set tabstop=4 " sets tabs to be two spaces
 set incsearch " highlights search as you type
 set ignorecase " ignores case for search
 set smartcase " turns off ignorecase if one or more uppercase letters are in the search query
 " imap jj <Esc> " maps jj to esc (only want this in insert mode) " maybe jlj like uji?
 
+
 set showcmd " show commands in bottom right
+
 
 set hlsearch " highlights all instances of search string
 filetype plugin on " for plugins
 
+
 " make cw consistent with dw, yw, vw
 onoremap w :execute 'normal! '.v:count1.'w'<CR>
 
+
 set mouse=nv " allows mouse to be used in normal and visual modes
+
+
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " stop auto line commenting
+
+
 set autoindent " autoindenting
+
+
 " for ubuntu systems
 "set clipboard=unnamedplus " use machine clipboard (need to compile vim with +clipboard for this to work)
 " for mac systems
 set clipboard=unnamed " use machine clipboard (need to compile vim with +clipboard for this to work)
+
 
 " settings for gvim
 "set guioptions-=m " remove menu bar
@@ -107,23 +118,30 @@ set guioptions-=T " remove toolbar
 set guioptions-=r " remove right-hand scroll bar
 set guioptions-=L " remove left-hand scroll bar
 
+
 " save similar to other programs
 " not working in gvim for some reason
 nnoremap <C-s> :<C-u>update<CR>
 
+
 " bug for when cursor is at end of line
 inoremap <C-s> <Esc>:update<CR>a
+
 
 " delete next word in insert mode
 inoremap <C-d> <Esc>l"_dei
 
+
 au BufNewFile,BufRead *.ejs set filetype=html " ejs
+
 
 " select pasted text
 nnoremap gV `[v`]
 
+
 " make Y more like C and C
 nnoremap Y y$
+
 
 " yank function shell
 " yanks line and corresponding closing match
@@ -157,14 +175,17 @@ nnoremap N Nzz
 
 nnoremap <Del> "_x
 
+
 " for english
 set spelllang=en_ca
 set spell
+
 
 " gruvbox better for terminal
 " for some reason, only works if both are set sequentially
 colorscheme blackboard
 colorscheme gruvbox
+
 
 " GitGutter
 highlight clear SignColumn " to look good with gitgutter
@@ -178,6 +199,7 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+
 " from Justin
 "fixes vim backspace in zsh
   "value	effect
@@ -186,7 +208,9 @@ endif
     "2	same as ":set backspace=indent,eol,start"
 set backspace=2
 
+
 "autocmd VimEnter * set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
+
 
 let g:unite_source_grep_max_candidates = 50000
 
@@ -222,7 +246,10 @@ endif
 nnoremap <Leader>rc :vsp ~/.vimrc<CR>
 nnoremap <Leader>so :source %<CR>
 
-set tw=0 " prevent auto line breaks
+
+" prevent auto line breaks
+set tw=0
+
 
 " neosnippet
 " Plugin key-mappings.
@@ -243,20 +270,24 @@ set tw=0 " prevent auto line breaks
   "set conceallevel=2 concealcursor=i
 "endif
 
+
 " for behaviour similar to 'C', 'D', 'Y'
 nnoremap <Leader>v vg_
+
 
 " CtrlP
 let g:ctrlp_max_depth = 20
 let g:ctrlp_max_files = 40000
 let g:ctrlp_working_path_mode = '0' " for CtrlP local working directory
 let g:ctrlp_custom_ignore = {
-  \ 'dir': 'tnoodle\|node_modules\|dist',
+  \ 'dir': 'tnoodle\|node_modules\|dist\|env',
   \ 'file': '.*\.png'
   \ }
 
+
 " highlights trailing spaces
 set listchars=tab:>-,trail:_ list
+
 
 " operator-replace
 " replace text without clobbering paste register
@@ -265,10 +296,12 @@ map _ <Plug>(operator-replace)
 
 nnoremap <C-F> :<C-u>Unite grep<CR><CR>
 
+
 " rough (shouldn't use v)
 " jump to '{' of container {} block
 nnoremap [{ va{%<Esc>
 nnoremap [} va{<Esc>
+
 
 " NERDTree bindings
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -279,9 +312,17 @@ set scrolloff=3
 
 let g:flake8_cmd='/usr/local/bin/flake8'
 
+
 " fix vim in tmux on osx
 set t_ut=
+
 
 " make n/N direction consistent
 nnoremap <expr> n 'Nn'[v:searchforward]
 nnoremap <expr> N 'nN'[v:searchforward]
+
+
+" e - jump when <cr> is pressed, but only to windows in the current tab.
+" t - jump when <c-t> is pressed, but only to windows in another tab.
+  " t will open in a new tab if not in any other tabs
+let g:ctrlp_switch_buffer = 'et'
