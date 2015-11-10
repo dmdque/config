@@ -1,5 +1,17 @@
 [user]
 	name = Daniel Que
 	email = danielq@uber.com
+[branch]
+	autosetuprebase = always
+[rerere]
+	enabled = true
+[url "ssh://gitolite@code.uber.internal/"]
+	insteadOf = git://code.uber.internal/
+[url "ssh://git@github.com/uber/"]
+	insteadOf = https://github.com/uber/
+[core]
+	excludesfile = tags
 [color]
 	ui = true
+[alias]
+	ignored = !git ls-files -v | grep "^[[:lower:]]"
