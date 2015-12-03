@@ -25,12 +25,12 @@ Plugin 'vim-jp/vital.vim'
 "Plugin 'jaxbot/selective-undo.vim' " very buggy plugin
 Plugin 'kana/vim-operator-user'
 Plugin 'kana/vim-operator-replace'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'nvie/vim-flake8'
+Plugin 'tpope/vim-unimpaired'  " for [l, ]l
 
 " Colourschemes
 Plugin 'morhetz/gruvbox'
 Plugin 'freeo/vim-kalisi'
+Plugin 'altercation/vim-colors-solarized'
 " my plugins
 "Plugin 'file:///Users/danielq/projects/git/cubetime.vim'
 "Bundle '~/path/your-plugin/.git'
@@ -46,12 +46,17 @@ Plugin 'freeo/vim-kalisi'
 "calendar
 
 " language syntax
+Plugin 'scrooloose/syntastic'
+"Plugin 'nvie/vim-flake8'  " don't need this if I have syntastic
+
 Plugin 'digitaltoad/vim-jade'
 Plugin 'groenewege/vim-less'
+Plugin 'solarnz/thrift.vim'
 " for ejs
 Plugin 'pangloss/vim-javascript'
 Plugin 'briancollins/vim-jst'
 Plugin 'derekwyatt/vim-scala'
+
 
 noremap <silent> <F4> :GundoToggle<CR>
 
@@ -76,10 +81,10 @@ let mapleader = " "
 set number " set line number
 set expandtab " turns tabs into spaces
 " general preference
-set shiftwidth=2 " for |<<| and |>>|
-set tabstop=2 " sets tabs to be two spaces
-"set shiftwidth=4 " for |<<| and |>>|
-"set tabstop=4 " sets tabs to be two spaces
+"set shiftwidth=2 " for |<<| and |>>|
+"set tabstop=2 " sets tabs to be two spaces
+set shiftwidth=4 " for |<<| and |>>|
+set tabstop=4 " sets tabs to be two spaces
 set incsearch " highlights search as you type
 set ignorecase " ignores case for search
 set smartcase " turns off ignorecase if one or more uppercase letters are in the search query
@@ -310,8 +315,6 @@ nnoremap <C-j> :NERDTreeFind<CR>
 " Keep 3 lines above and below cursor
 set scrolloff=3
 
-let g:flake8_cmd='/usr/local/bin/flake8'
-
 
 " fix vim in tmux on osx
 set t_ut=
@@ -326,3 +329,43 @@ nnoremap <expr> N 'nN'[v:searchforward]
 " t - jump when <c-t> is pressed, but only to windows in another tab.
   " t will open in a new tab if not in any other tabs
 let g:ctrlp_switch_buffer = 'et'
+
+
+" TODO: shortcut (and plugin) to copy filepath to clipboard
+
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_javascript_checkers = ['linttrap']
+" Flake8
+"let g:flake8_cmd='/usr/local/bin/flake8'
+
+
+nnoremap <F7> :SyntasticCheck<CR>
+nnoremap <F8> :SyntasticReset<CR>
+
+
+" Set working directory to current file
+" Note: this is a temp hack for linttrap.vim
+" :p: full path
+" :h: directory head
+nnoremap <F9> :lcd %:p:h<CR>
+nnoremap <F10> :cd ~/Uber/sync/danielq.dev.uber.com/home/uber/kaleidoscope<CR>  " suuuper hacky
+
+
+" Ensure filename shown in statusline, even with Syntastic
+"set statusline+=%f  " TODO: make idempotent so file can be sourced after Vim start
+" check if end of statusline has '%f'
+set statusline=
+set statusline+=%#warningmsg#%{SyntasticStatuslineFlag()}%*
+set statusline+=%f\ %m\%=line:%l/%L\ col:%c\ --%p%%--
+set laststatus=2  " statusline always visible
