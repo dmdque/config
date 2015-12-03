@@ -1,0 +1,7 @@
+# from http://ctags.sourceforge.net/
+wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
+tar xf ctags-5.8.tar.gz 
+cd ctags-5.8/
+./configure --prefix=/home/uber/local/
+make
+make install
