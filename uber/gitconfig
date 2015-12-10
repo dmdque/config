@@ -10,8 +10,11 @@
 [url "ssh://git@github.com/uber/"]
 	insteadOf = https://github.com/uber/
 [core]
-	excludesfile = tags
+	excludesfile = ~/.gitignore
 [color]
 	ui = true
 [alias]
-	ignored = !git ls-files -v | grep "^[[:lower:]]"
+  cm = commit
+  cma = commit --amend
+  co = checkout
+  ignored = !git ls-files -v | grep "^[[:lower:]]"

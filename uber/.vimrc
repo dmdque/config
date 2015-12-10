@@ -81,10 +81,10 @@ let mapleader = " "
 set number " set line number
 set expandtab " turns tabs into spaces
 " general preference
-"set shiftwidth=2 " for |<<| and |>>|
-"set tabstop=2 " sets tabs to be two spaces
-set shiftwidth=4 " for |<<| and |>>|
-set tabstop=4 " sets tabs to be two spaces
+set shiftwidth=2 " for |<<| and |>>|
+set tabstop=2 " sets tabs to be two spaces
+"set shiftwidth=4 " for |<<| and |>>|
+"set tabstop=4 " sets tabs to be two spaces
 set incsearch " highlights search as you type
 set ignorecase " ignores case for search
 set smartcase " turns off ignorecase if one or more uppercase letters are in the search query
@@ -369,3 +369,20 @@ set statusline=
 set statusline+=%#warningmsg#%{SyntasticStatuslineFlag()}%*
 set statusline+=%f\ %m\%=line:%l/%L\ col:%c\ --%p%%--
 set laststatus=2  " statusline always visible
+
+
+" Disable YouCompleteMe scratch preview
+set completeopt=menuone
+
+" Wrap in '' and add trailing comma
+function! SQLListify()
+    %s/\(\S*\)/'\1',/g
+    $s/,$/
+endfunction
+command! SQLListify call SQLListify()
+
+" Format all uuids
+function! FormatUUIDS()
+    %s/\(\w\{8\}\)\(\w\{4\}\)\(\w\{4\}\)\(\w\{4\}\)\(\w\{12\}\)/\1-\2-\3-\4-\5/g
+endfunction
+command! FormatUUIDS call FormatUUIDS()
