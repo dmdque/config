@@ -17,4 +17,6 @@
   cm = commit
   cma = commit --amend
   co = checkout
+  gdiff = git diff
   ignored = !git ls-files -v | grep "^[[:lower:]]"
+  st = status
