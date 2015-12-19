@@ -374,6 +374,7 @@ set laststatus=2  " statusline always visible
 " Disable YouCompleteMe scratch preview
 set completeopt=menuone
 
+
 " Wrap in '' and add trailing comma
 function! SQLListify()
     %s/\(\S*\)/'\1',/g
@@ -381,8 +382,17 @@ function! SQLListify()
 endfunction
 command! SQLListify call SQLListify()
 
+
 " Format all uuids
 function! FormatUUIDS()
-    %s/\(\w\{8\}\)\(\w\{4\}\)\(\w\{4\}\)\(\w\{4\}\)\(\w\{12\}\)/\1-\2-\3-\4-\5/g
+    %s/\<
+      \\([0-9A-Fa-f]\{8\}
+      \\)\([0-9A-Fa-f]\{4\}\)
+      \\([0-9A-Fa-f]\{4\}\)
+      \\([0-9A-Fa-f]\{4\}\)
+      \\([0-9A-Fa-f]\{12\}\)
+      \\>
+      \/\1-\2-\3-\4-\5
+      \/g
 endfunction
 command! FormatUUIDS call FormatUUIDS()
