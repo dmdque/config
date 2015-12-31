@@ -1,0 +1,18 @@
+[user]
+  email = dmdque@gmail.com
+  name = Daniel Que
+[branch]
+  autosetuprebase = always
+[rerere]
+  enabled = true
+[color]
+  ui = true
+[core]
+  excludesfile = ~/.gitignore
+[alias]
+  cm = commit
+  cma = commit --amend
+  co = checkout
+  gdiff = git diff
+  ignored = !git ls-files -v | grep "^[[:lower:]]"
+  st = status
