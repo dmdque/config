@@ -56,6 +56,7 @@ Plugin 'solarnz/thrift.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'briancollins/vim-jst'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'tikhomirov/vim-glsl'
 
 
 noremap <silent> <F4> :GundoToggle<CR>
@@ -112,9 +113,9 @@ set autoindent " autoindenting
 
 
 " for ubuntu systems
-"set clipboard=unnamedplus " use machine clipboard (need to compile vim with +clipboard for this to work)
+set clipboard=unnamedplus " use machine clipboard (need to compile vim with +clipboard for this to work)
 " for mac systems
-set clipboard=unnamed " use machine clipboard (need to compile vim with +clipboard for this to work)
+"set clipboard=unnamed " use machine clipboard (need to compile vim with +clipboard for this to work)
 
 
 " settings for gvim
@@ -196,6 +197,12 @@ colorscheme gruvbox
 highlight clear SignColumn " to look good with gitgutter
 autocmd VimEnter * highlight clear SignColumn " to look good with gitgutter in Ubuntu
 set updatetime=750
+
+" Increase max signs
+let g:gitgutter_max_signs=1000
+
+" Specify commit to compare against
+let g:gitgutter_diff_args="221e37ab81b96b77dadaf032a00a2104225b4b01"
 
 "autocmd VimEnter * GitGutterLineHighlightsEnable
 
@@ -396,3 +403,8 @@ function! FormatUUIDS()
       \/g
 endfunction
 command! FormatUUIDS call FormatUUIDS()
+
+" Silence annoying confirmation
+let g:ycm_confirm_extra_conf = 0
+
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'

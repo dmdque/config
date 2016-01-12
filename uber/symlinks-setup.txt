@@ -1,2 +1,0 @@
-# use -f or -F
-ln .vimrc ~/.vimrc

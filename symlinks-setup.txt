@@ -1,0 +1,5 @@
+# use -f or -F
+ln vimrc ~/.vimrc
+ln gitconfig ~/.gitconfig
+ln rc-update ~/rc-update
+ln ycm_extra_conf.py ~/.ycm_extra_conf.py
