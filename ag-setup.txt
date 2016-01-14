@@ -1,3 +1,4 @@
+# Note: must replace `~` with absolute path
 # setup ag on devserver with no access to apt-get
 # dependencies: Automake, pkg-config, PCRE, LZMA
 # note: assumes Automake, pkg-config, LZMA already installed
@@ -5,6 +6,7 @@
 # from ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/
 wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.37.tar.gz
 
+tar xvzf pcre-8.37.tar.gz
 cd pcre-8.37.tar.gz
 ./configure --prefix=~/local
 make
@@ -13,6 +15,7 @@ make install
 # from http://geoff.greer.fm/ag/
 wget http://geoff.greer.fm/ag/releases/the_silver_searcher-0.31.0.tar.gz
 
+tar xvzf the_silver_searcher-0.31.0.tar.gz
 cd the_silver_searcher-0.31.0.tar.gz
 ./configure --prefix=~/local
 make
