@@ -107,6 +107,9 @@ bindkey '^H' backward-delete-char
 function cx {
     cd "$@" && ls
 }
+function mkcd {
+    mkdir "$@" && cd "$@"
+}
 
 source /usr/local/bin/virtualenvwrapper.sh
 
