@@ -17,3 +17,5 @@
   ignored = !git ls-files -v | grep "^[[:lower:]]"
   lg = log
   st = status
+[credential]
+  helper = cache --timeout=3600  ; 1 hour
