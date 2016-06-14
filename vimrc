@@ -113,9 +113,9 @@ set autoindent " autoindenting
 
 
 " for ubuntu systems
-set clipboard=unnamedplus " use machine clipboard (need to compile vim with +clipboard for this to work)
+"set clipboard=unnamedplus " use machine clipboard (need to compile vim with +clipboard for this to work)
 " for mac systems
-"set clipboard=unnamed " use machine clipboard (need to compile vim with +clipboard for this to work)
+set clipboard=unnamed " use machine clipboard (need to compile vim with +clipboard for this to work)
 
 
 " settings for gvim

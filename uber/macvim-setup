@@ -6,11 +6,11 @@
 # - vimrc
 
 # Get vimrc
-curl https://raw.githubusercontent.com/dmdque/config/master/.vimrc -o ~/.vimrc
+ln -f ~/git/config/vimrc ~/.vimrc
 
 # Setup blackboard colourscheme
-mkdir -p ~/.vim/colors/
-curl https://raw.githubusercontent.com/dmdque/config/master/blackboard.vim -o ~/.vim/colors/blackboard.vim
+# mkdir -p ~/.vim/colors/
+# curl https://raw.githubusercontent.com/dmdque/config/master/blackboard.vim -o ~/.vim/colors/blackboard.vim
 
 # Setup Vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim

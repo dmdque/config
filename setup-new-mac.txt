@@ -1,0 +1,59 @@
+# install google chrome
+# install iterm2
+# install xcode
+
+mkdir -p ~/setup
+
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# install seil
+# install snap
+# install divvy
+# install 1password
+# install onenote
+# set date and time to show seconds
+# install dropbox
+# spotify
+
+brew install vim
+
+brew install macvim
+brew install tmux
+
+# install xvim
+cd ~/git
+git clone git@github.com:XVimProject/XVim.git
+cd XVim/
+make
+
+# install dracula xcode theme
+cd ~/git
+mkdir dracula
+cd dracula
+git clone https://github.com/dracula/xcode.git
+mkdir -p ~/Library/Developer/Xcode/UserData/FontAndColorThemes/
+ln -s ~/git/dracula/xcode/Dracula.dvtcolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes/Dracula.dvtcolortheme
+
+# zsh
+cd ~/git/config/uber
+ln zshrc ~/.zshrc
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone git://github.com/tarruda/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
+# set up git
+git config --global user.email "dmdque@gmail.com"
+git config --global user.name "Daniel Que"
+
+# vim setup
+cd ~/git/config/uber
+source macvim-setup
+
+# tmux setup
+cd ~/git/config/uber
+ln -f tmux.conf ~/.tmux.conf
+
+# python pip setup
+brew install python  # this installs a second python, but also installs pip in /usr/local/bin/
+# cd ~/setup
+# curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+# python get-pip.py
