@@ -26,6 +26,7 @@ Plugin 'vim-jp/vital.vim'
 Plugin 'kana/vim-operator-user'
 Plugin 'kana/vim-operator-replace'
 Plugin 'tpope/vim-unimpaired'  " for [l, ]l
+Plugin 'reedes/vim-pencil'
 
 " Colourschemes
 Plugin 'morhetz/gruvbox'
@@ -33,11 +34,9 @@ Plugin 'freeo/vim-kalisi'
 Plugin 'altercation/vim-colors-solarized'
 " my plugins
 "Plugin 'file:///Users/danielq/projects/git/cubetime.vim'
-"Bundle '~/path/your-plugin/.git'
-"Bundle '/Users/danielq/projects/git/cubetime.vim/.git' " ?? works?
+"Plugin 'dmdque/cubetime.vim'
 
 "Plugin 'jgdavey/tslime.vim' " execute code in shell
-" ctrlsf?
 " TO INSTALL
 "quickrun
 "caw
@@ -47,7 +46,6 @@ Plugin 'altercation/vim-colors-solarized'
 
 " language syntax
 Plugin 'scrooloose/syntastic'
-"Plugin 'nvie/vim-flake8'  " don't need this if I have syntastic
 
 Plugin 'digitaltoad/vim-jade'
 Plugin 'groenewege/vim-less'
@@ -57,6 +55,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'briancollins/vim-jst'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'tikhomirov/vim-glsl'
+Plugin 'keith/swift.vim'
+Plugin 'msanders/cocoa.vim'
 
 
 noremap <silent> <F4> :GundoToggle<CR>
@@ -72,8 +72,8 @@ nmap <Tab>/ <Plug>(easymotion-sn)
 nmap <Tab>w <Plug>(easymotion-w)
 nmap <Tab>b <Plug>(easymotion-bd-w)
 
-nnoremap <C-k> <Tab> " since <C-i> isn't working
-"nnoremap <nowait> <C-i> <Tab>
+"nnoremap <C-k> <Tab> " since <C-i> isn't working
+nnoremap <nowait> <C-i> <Tab>
 
 call vundle#end()
 filetype plugin indent on
@@ -189,7 +189,7 @@ set spell
 
 " gruvbox better for terminal
 " for some reason, only works if both are set sequentially
-colorscheme blackboard
+"colorscheme blackboard
 colorscheme gruvbox
 
 
@@ -202,7 +202,7 @@ set updatetime=750
 let g:gitgutter_max_signs=1000
 
 " Specify commit to compare against
-let g:gitgutter_diff_args="221e37ab81b96b77dadaf032a00a2104225b4b01"
+"let g:gitgutter_diff_args="221e37ab81b96b77dadaf032a00a2104225b4b01"
 
 "autocmd VimEnter * GitGutterLineHighlightsEnable
 
@@ -353,6 +353,7 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['linttrap']
+let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
 " Flake8
 "let g:flake8_cmd='/usr/local/bin/flake8'
 
@@ -408,3 +409,5 @@ command! FormatUUIDS call FormatUUIDS()
 let g:ycm_confirm_extra_conf = 0
 
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
+autocmd BufNewFile,BufRead \.antigenrc set filetype=sh

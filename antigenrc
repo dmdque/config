@@ -1,0 +1,11 @@
+source ~/.antigen.zsh
+antigen bundle robbyrussell/oh-my-zsh lib/
+antigen apply
+
+antigen theme sorin
+
+antigen bundle git
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search  # must be after zsh-syntax-highlighting
+antigen bundle junegunn/fzf
+antigen bundle zsh-users/zsh-autosuggestions

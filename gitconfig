@@ -10,6 +10,7 @@
 [core]
   excludesfile = ~/.gitignore
 [alias]
+  br = branch
   cm = commit
   cma = commit --amend
   co = checkout

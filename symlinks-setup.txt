@@ -1,4 +1,5 @@
-ln -s ~/git/config/uber/zshrc ~/.zshrc
+ln -s ~/git/config/zshrc ~/.zshrc
+ln -s ~/git/config/antigenrc ~/.antigenrc
 ln -s ~/git/config/vimrc ~/.vimrc
 ln -s ~/git/config/gitconfig ~/.gitconfig
 ln -s ~/git/config/rc-update ~/rc-update
