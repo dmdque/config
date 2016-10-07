@@ -5,7 +5,7 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'  # Get rid of path highlight
 
 # zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
-zle -N zle-line-init  # fixes 'no such widget error' when using with fzf
+#zle -N zle-line-init  # fixes 'no such widget error' when using with fzf, but breaks zsh-history-substring-search
 
 # virtualenvwrapper
 source /usr/local/bin/virtualenvwrapper.sh
@@ -34,6 +34,7 @@ alias -s gitignore=vim
 alias mv='mv -i'
 alias cp='cp -i'
 alias build_shoppie='xcodebuild -workspace shoppie.xcworkspace -scheme shoppie build'
+function dictl() { dict $@ | less }
 function vsed() { vim -es $@ '+:q!' /dev/stdin }
 # cat ex | vim -es '+%join' '+%s/.*ENOENT.\{-}\(\/.\{-}\)\ .*/\2/g' '+%print' '+:q!' /dev/stdin
 function mkcd() { mkdir "$@" ; cd "$@" }

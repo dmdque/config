@@ -1,3 +1,4 @@
+" TODO: use neobundle.vim
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -14,7 +15,6 @@ Plugin 'sjl/gundo.vim' " Thanks to Dave
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'mileszs/ack.vim'
 "Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'tpope/vim-surround'
@@ -82,10 +82,10 @@ let mapleader = " "
 set number " set line number
 set expandtab " turns tabs into spaces
 " general preference
-set shiftwidth=2 " for |<<| and |>>|
-set tabstop=2 " sets tabs to be two spaces
-"set shiftwidth=4 " for |<<| and |>>|
-"set tabstop=4 " sets tabs to be two spaces
+"set shiftwidth=2 " for |<<| and |>>|
+"set tabstop=2 " sets tabs to be two spaces
+set shiftwidth=4 " for |<<| and |>>|
+set tabstop=4 " sets tabs to be two spaces
 set incsearch " highlights search as you type
 set ignorecase " ignores case for search
 set smartcase " turns off ignorecase if one or more uppercase letters are in the search query
@@ -206,11 +206,6 @@ let g:gitgutter_max_signs=1000
 
 "autocmd VimEnter * GitGutterLineHighlightsEnable
 
-" make Ack use ag
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
 
 " from Justin
 "fixes vim backspace in zsh
@@ -295,6 +290,11 @@ let g:ctrlp_custom_ignore = {
   \ 'dir': 'tnoodle\|node_modules\|dist\|env',
   \ 'file': '.*\.png'
   \ }
+if executable('rg')
+    let g:ctrlp_user_command = 'rg %s -l --hidden --files'
+elseif executable('ag')
+    let g:ctrlp_user_command = 'ag %s -l --hidden -g ""'
+endif
 
 
 " highlights trailing spaces
@@ -360,14 +360,6 @@ let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
 
 nnoremap <F7> :SyntasticCheck<CR>
 nnoremap <F8> :SyntasticReset<CR>
-
-
-" Set working directory to current file
-" Note: this is a temp hack for linttrap.vim
-" :p: full path
-" :h: directory head
-nnoremap <F9> :lcd %:p:h<CR>
-nnoremap <F10> :cd ~/Uber/sync/danielq.dev.uber.com/home/uber/kaleidoscope<CR>  " suuuper hacky
 
 
 " Ensure filename shown in statusline, even with Syntastic
