@@ -2,11 +2,6 @@ ACTIVE
 ======
 
 VIM
-ctrl-G:   displays name of file
-ctrl-A:   goes to next number on same line and increments it
-ctrl-x:     decrements number
-crtl-z:   suspends
-          fg from shell to return to foreground
 gh:       select mode
 <C-g>:    (from Visual Mode) select mode
 
@@ -29,5 +24,10 @@ alt+d:    deletes word (same as esc+d)
 ARCHIVED
 ========
 # for commands that have been mastered or dumped
+ctrl-G:   displays name of file
+ctrl-A:   goes to next number on same line and increments it
+ctrl-x:     decrements number
+crtl-z:   suspends
+          fg from shell to return to foreground
 
 NOTE: consider adding "set -o vi" to .bashrc
