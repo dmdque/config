@@ -1,0 +1,29 @@
+" Basic config
+set number
+
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+
+set expandtab
+set shiftwidth=2
+set tabstop=2
+
+set showcmd
+set wildmenu
+
+set autoindent
+
+syntax on
+
+set textwidth=0
+
+" Remaps
+let mapleader = " "
+
+" make Y more like C and C
+nnoremap Y y$
+
+" for behaviour similar to 'C', 'D', 'Y'
+nnoremap <Leader>v vg_
