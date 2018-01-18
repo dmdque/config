@@ -27,6 +27,7 @@ Plugin 'kana/vim-operator-user'
 Plugin 'kana/vim-operator-replace'
 Plugin 'tpope/vim-unimpaired'  " for [l, ]l
 Plugin 'reedes/vim-pencil'
+Plugin 'Shougo/denite.nvim'
 
 " Colourschemes
 Plugin 'morhetz/gruvbox'
@@ -52,13 +53,16 @@ Plugin 'groenewege/vim-less'
 Plugin 'solarnz/thrift.vim'
 " for ejs
 Plugin 'pangloss/vim-javascript'
-Plugin 'briancollins/vim-jst'
+Plugin 'mxw/vim-jsx'
+Plugin 'ternjs/tern_for_vim'
+"Plugin 'briancollins/vim-jst'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'keith/swift.vim'
 Plugin 'msanders/cocoa.vim'
-
-
+Plugin 'fatih/vim-go'
+call vundle#end()
+filetype plugin indent on
 noremap <silent> <F4> :GundoToggle<CR>
 
 " incsearch
@@ -67,16 +71,14 @@ map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
 " Easymotion
-map <Tab> <Plug>(easymotion-prefix)
-nmap <Tab>/ <Plug>(easymotion-sn)
-nmap <Tab>w <Plug>(easymotion-w)
-nmap <Tab>b <Plug>(easymotion-bd-w)
+"map <Tab> <Plug>(easymotion-prefix)
+map f <Plug>(easymotion-f)
+map F <Plug>(easymotion-F)
+nnoremap <Leader>f f
 
 "nnoremap <C-k> <Tab> " since <C-i> isn't working
 nnoremap <nowait> <C-i> <Tab>
 
-call vundle#end()
-filetype plugin indent on
 
 let mapleader = " "
 set number " set line number
@@ -84,8 +86,8 @@ set expandtab " turns tabs into spaces
 " general preference
 "set shiftwidth=2 " for |<<| and |>>|
 "set tabstop=2 " sets tabs to be two spaces
-set shiftwidth=4 " for |<<| and |>>|
-set tabstop=4 " sets tabs to be two spaces
+set shiftwidth=2 " for |<<| and |>>|
+set tabstop=2 " sets tabs to be n spaces
 set incsearch " highlights search as you type
 set ignorecase " ignores case for search
 set smartcase " turns off ignorecase if one or more uppercase letters are in the search query
@@ -161,7 +163,7 @@ nnoremap Y y$
 "nnoremap yY mzyyf{%:let @+=@+.getline('.')."\n"<CR>`z
 function! s:yankshell()
   normal mzyy$
-  normal F{f{ " to ensure we grab the last one
+  normal! F{f{ " to ensure we grab the last one
   normal %
   let @+=@+.getline('.')."\n"
   normal `z
@@ -218,44 +220,39 @@ set backspace=2
 
 "autocmd VimEnter * set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
 
-
-let g:unite_source_grep_max_candidates = 50000
-
-
-"" grep if no ag options
-"let g:unite_source_rec_ignore_pattern = 'env'
-"call unite#sources#rec#define()
-"call unite#custom#source('file_rec/async,file_mru,file,buffer,grep', 'ignore_pattern', g:unite_source_rec_ignore_pattern)
-
-
-" from uji
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
+if executable('rg')
+  let g:unite_source_grep_command = 'rg'
   let g:unite_source_grep_default_opts =
-        \ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
-        \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' --ignore tags'
+        \ '--vimgrep --no-heading --smart-case --hidden'
   let g:unite_source_grep_recursive_opt = ''
-elseif executable('ack-grep')
-    " Use ack in unite grep source.
-    let g:unite_source_grep_command = 'ack-grep'
-    let g:unite_source_grep_default_opts =
-                \ '-i --no-heading --no-color -H ' .
-                \ '--ignore-dir="env"'
-    let g:unite_source_grep_recursive_opt = ''
 endif
 
-" also from uji
-if globpath(&rtp, 'plugin/unite.vim') != ''
-  " make it hard to invoke accidentally
-  nnoremap <Leader>P :<C-u>Unite file_rec/async:! -default-action=split -direction=rightbelow<Cr>
-endif
+" Denite Ripgrep command on grep source
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts',
+\ ['--vimgrep', '--no-heading', '--smart-case'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+
+" nnoremap <C-F> :<C-u>Denite grep -mode=normal -updatetime=200<CR><CR>
+nnoremap <C-F> :<C-u>Unite grep<CR><CR>
+
+"function! globalStar()
+  "let cword = expand("<cword>")
+
+"endfunction
+"nnoremap <Leader>* :<C-u>Unite grep<CR><CR>expand("<cword>")
+
 
 nnoremap <Leader>rc :vsp ~/.vimrc<CR>
 nnoremap <Leader>so :source %<CR>
 
 
 " prevent auto line breaks
-set tw=0
+set textwidth=0
 
 
 " neosnippet
@@ -265,7 +262,7 @@ set tw=0
 "xmap <C-k> <Plug>(neosnippet_expand_target)
 
 "" SuperTab like snippets behavior.
-"imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  "imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 "\ "\<Plug>(neosnippet_expand_or_jump)"
 "\: pumvisible() ? "\<C-n>" : "\<TAB>"
 "smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -287,26 +284,26 @@ let g:ctrlp_max_depth = 20
 let g:ctrlp_max_files = 40000
 let g:ctrlp_working_path_mode = '0' " for CtrlP local working directory
 let g:ctrlp_custom_ignore = {
-  \ 'dir': 'tnoodle\|node_modules\|dist\|env',
+  \ 'dir': 'tnoodle\|node_modules\|dist\|env\|dist-client|\dist-server',
   \ 'file': '.*\.png'
   \ }
 if executable('rg')
-    let g:ctrlp_user_command = 'rg %s -l --hidden --files'
+    let g:ctrlp_user_command = 'rg %s -l --files --hidden'
 elseif executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --hidden -g ""'
+    let g:ctrlp_user_command = 'ag %s -l -g ""'
 endif
 
 
 " highlights trailing spaces
-set listchars=tab:>-,trail:_ list
+set list
+set listchars=tab:░░,trail:_
+" other possibilities: ▒░
 
 
 " operator-replace
 " replace text without clobbering paste register
 " just use g@ instead
 map _ <Plug>(operator-replace)
-
-nnoremap <C-F> :<C-u>Unite grep<CR><CR>
 
 
 " rough (shouldn't use v)
@@ -415,3 +412,30 @@ let g:syntastic_mode_map = {
 
 
 au BufReadPost *.md set syntax=markdown
+
+
+" CTRL-R CTRL-W				*c_CTRL-R_CTRL-W* *c_<C-R>_<C-W>*
+" 			CTRL-W	the Word under the cursor
+
+autocmd filetype crontab setlocal nobackup nowritebackup
+
+
+" JSX in .js files with mxw/vim-jsx
+let g:jsx_ext_required = 0
+
+
+" ctags navigation
+nnoremap <Leader>n :tnext<CR>
+nnoremap <Leader>N :tNext<CR>
+
+" tern
+" this function doesn't work at all atm.
+" let fts = ['js', 'jsx']
+" function! jumpDef()
+"   if index(fts, &filetype) == -1
+"     TernDef
+"   else
+"     normal <CTRL-]>
+"   endif
+" endfunction
+" map CTRL-] :<C-u>call <SID>jumpDef()<Cr>

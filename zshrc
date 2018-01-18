@@ -8,7 +8,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
 #zle -N zle-line-init  # fixes 'no such widget error' when using with fzf, but breaks zsh-history-substring-search
 
 # virtualenvwrapper
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # ----
 # Allow command line editing in an external editor.
@@ -26,7 +26,7 @@ alias ssx ssh -C -X -c blowfish
 alias rl='ssh ubuntu@rtmp.shoppie.tv "tail -f /usr/local/nginx/logs/access.log"'
 alias sshrtmp='ssh ubuntu@rtmp.shoppie.tv'
 alias sf='find . -iname'  # search file
-alias search='rg --files -g'
+alias search='rg --smart-case --files -g'
 alias upod='~/.gem/ruby/2.3.0/bin/pod'
 alias -s zshrc=vim
 alias -s antigenrc=vim
@@ -34,6 +34,7 @@ alias -s gitignore=vim
 alias mv='mv -i'
 alias cp='cp -i'
 alias build_shoppie='xcodebuild -workspace shoppie.xcworkspace -scheme shoppie build'
+alias nvim='~/nvim-osx64/bin/nvim'
 function dictl() { dict $@ | less }
 function vsed() { vim -es $@ '+:q!' /dev/stdin }
 # cat ex | vim -es '+%join' '+%s/.*ENOENT.\{-}\(\/.\{-}\)\ .*/\2/g' '+%print' '+:q!' /dev/stdin
@@ -78,10 +79,10 @@ bindkey '^[[B' history-substring-search-down
 #export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$CUDA_HOME/lib"
 #export PATH="$CUDA_HOME/bin:$PATH"
 
-# nvm temporary, fix this
-export NVM_DIR="/usr/local/opt/nvm/"
-#source /usr/local/opt/nvm/nvm.sh
-nvm() { . "$NVM_DIR/nvm.sh" ; nvm $@ ; }
+# # nvm temporary, fix this
+# export NVM_DIR="/usr/local/opt/nvm/"
+# #source /usr/local/opt/nvm/nvm.sh
+# nvm() { . "$NVM_DIR/nvm.sh" ; nvm $@ ; }
 
 
 ## unsetopt EXTENDED_GLOB
