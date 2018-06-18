@@ -7,9 +7,6 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'  # Get rid of path highlight
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
 #zle -N zle-line-init  # fixes 'no such widget error' when using with fzf, but breaks zsh-history-substring-search
 
-# virtualenvwrapper
-source /usr/local/bin/virtualenvwrapper.sh
-
 # ----
 # Allow command line editing in an external editor.
 # https://www.reddit.com/r/vim/comments/4qwiyp/is_there_a_better_vimlike_shell_than_zshells_vim/
@@ -20,6 +17,8 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
 # Aliases
+# Reminder: -s is suffix, -g is global (doesn't have to be in command position)
+# man zshbuiltins for more information
 alias agen='antigen'
 alias ctg='ctags -R .'  # must be exuberant ctags
 alias ssx ssh -C -X -c blowfish
@@ -34,7 +33,15 @@ alias -s gitignore=vim
 alias mv='mv -i'
 alias cp='cp -i'
 alias build_shoppie='xcodebuild -workspace shoppie.xcworkspace -scheme shoppie build'
-function dictl() { dict $@ | less }
+alias t='truffle'
+alias tm='truffle migrate'
+alias tmr='truffle migrate --reset'
+alias tc='truffle compile'
+alias tcl='truffle console'
+alias tt='truffle test'
+alias -g hd2='/Volumes/Transcend'
+alias server='python -m SimpleHTTPServer'
+function di() { dict $@ | less }
 function vsed() { vim -es $@ '+:q!' /dev/stdin }
 # cat ex | vim -es '+%join' '+%s/.*ENOENT.\{-}\(\/.\{-}\)\ .*/\2/g' '+%print' '+:q!' /dev/stdin
 function mkcd() { mkdir "$@" ; cd "$@" }
@@ -89,6 +96,9 @@ nvm() { . "$NVM_DIR/nvm.sh" ; nvm $@ ; }
 #export PATH="$HOME/.rbenv/bin:$PATH"
 #eval "$(rbenv init -)"
 
+# Local node modules
+PATH=$PATH:./node_modules/.bin
+
 ## No arguments: `git status`
 ## With arguments: acts like `git`
 unalias g
@@ -101,3 +111,6 @@ function g() {
 }
 # Complete g like git
 compdef g=git
+
+export GOPATH=~/gocode
+

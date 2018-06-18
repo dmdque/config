@@ -19,7 +19,7 @@ Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-"Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet.vim'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'vim-jp/vital.vim'
 "Plugin 'jaxbot/selective-undo.vim' " very buggy plugin
@@ -27,6 +27,7 @@ Plugin 'kana/vim-operator-user'
 Plugin 'kana/vim-operator-replace'
 Plugin 'tpope/vim-unimpaired'  " for [l, ]l
 Plugin 'reedes/vim-pencil'
+Plugin 'majutsushi/tagbar'
 
 " Colourschemes
 Plugin 'morhetz/gruvbox'
@@ -57,6 +58,13 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'keith/swift.vim'
 Plugin 'msanders/cocoa.vim'
+Plugin 'fatih/vim-go'
+Plugin 'tomlion/vim-solidity'
+Plugin 'dmdque/solidity.vim'
+Plugin 'leafgarland/typescript-vim'
+
+Plugin 'Shougo/neocomplete'
+Plugin 'Shougo/neosnippet-snippets'
 
 
 noremap <silent> <F4> :GundoToggle<CR>
@@ -65,12 +73,6 @@ noremap <silent> <F4> :GundoToggle<CR>
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
-
-" Easymotion
-map <Tab> <Plug>(easymotion-prefix)
-nmap <Tab>/ <Plug>(easymotion-sn)
-nmap <Tab>w <Plug>(easymotion-w)
-nmap <Tab>b <Plug>(easymotion-bd-w)
 
 "nnoremap <C-k> <Tab> " since <C-i> isn't working
 nnoremap <nowait> <C-i> <Tab>
@@ -84,8 +86,8 @@ set expandtab " turns tabs into spaces
 " general preference
 "set shiftwidth=2 " for |<<| and |>>|
 "set tabstop=2 " sets tabs to be two spaces
-set shiftwidth=4 " for |<<| and |>>|
-set tabstop=4 " sets tabs to be two spaces
+set shiftwidth=2 " for |<<| and |>>|
+set tabstop=2 " sets tabs to be two spaces
 set incsearch " highlights search as you type
 set ignorecase " ignores case for search
 set smartcase " turns off ignorecase if one or more uppercase letters are in the search query
@@ -96,7 +98,6 @@ set showcmd " show commands in bottom right
 
 
 set hlsearch " highlights all instances of search string
-filetype plugin on " for plugins
 
 
 " make cw consistent with dw, yw, vw
@@ -291,14 +292,14 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '.*\.png'
   \ }
 if executable('rg')
-    let g:ctrlp_user_command = 'rg %s -l --hidden --files'
+    let g:ctrlp_user_command = 'rg %s -l --files'
 elseif executable('ag')
     let g:ctrlp_user_command = 'ag %s -l --hidden -g ""'
 endif
 
 
 " highlights trailing spaces
-set listchars=tab:>-,trail:_ list
+set listchars=tab:>-,trail:· list
 
 
 " operator-replace
@@ -354,6 +355,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['linttrap']
 let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
+let g:syntastic_solidity_checkers = ['solhint']
 " Flake8
 "let g:flake8_cmd='/usr/local/bin/flake8'
 
@@ -415,3 +417,44 @@ let g:syntastic_mode_map = {
 
 
 au BufReadPost *.md set syntax=markdown
+
+
+augroup quickfix
+  autocmd!
+  autocmd QuickFixCmdPost make nested copen
+augroup END
+
+
+" NeoSnippet
+let g:neosnippet#snippets_directory="~/.vim/snip"
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+
+
+" For global find and replace
+set hidden
+
+
+" Easymotion
+nmap <Leader>f <Plug>(easymotion-f)
+nmap <Leader>F <Plug>(easymotion-F)
+
+
+" Tagbar
+let g:tagbar_type_solidity = {
+      \ 'ctagstype' : 'solidity',
+      \ 'kinds'     : [
+      \ 'c:contract',
+      \ 'e:event',
+      \ 'f:function',
+      \ 'i:import',
+      \ 'm:modifier'
+      \ ],
+      \ 'sro' : '.',
+      \ 'kind2scope' : {
+      \ },
+      \ 'scope2kind' : {
+      \ },
+      \ 'ctagsbin'  : 'ctags',
+      \ 'ctagsargs' : '-f -'
+      \ }
+
