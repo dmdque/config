@@ -1,6 +1,7 @@
+source ~/.antigen.zsh  # Needs to source this twice on mbp2018 for some reason
 source ~/.antigenrc
 
-# zsh-syntqx-highlighting
+# zsh-syntax-highlighting
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'  # Get rid of path highlight
 
 # zsh-autosuggestions
@@ -41,6 +42,7 @@ alias tcl='truffle console'
 alias tt='truffle test'
 alias -g hd2='/Volumes/Transcend'
 alias server='python -m SimpleHTTPServer'
+alias vim='mvim -v'
 function di() { dict $@ | less }
 function vsed() { vim -es $@ '+:q!' /dev/stdin }
 # cat ex | vim -es '+%join' '+%s/.*ENOENT.\{-}\(\/.\{-}\)\ .*/\2/g' '+%print' '+:q!' /dev/stdin
