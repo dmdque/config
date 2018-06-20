@@ -1,0 +1,35 @@
+snippet function
+alias fun
+  function() {
+  }
+
+snippet mochatest
+alias it
+  it('should', async function() {
+  });
+
+snippet console
+alias con log
+  console.log('');
+
+snippet cli
+  if (require.main === module) {
+    process.argv.forEach(function (val, index) {
+      if (val == '--flag1') {
+      }
+      if (val == '--flag2') {
+      }
+    });
+  }
+
+snippet /**
+  /**
+   *
+   */
+
+snippet deployer
+  deployer.then(function() {
+    return Contract.new();
+  }).then(function(contract) {
+  });
+

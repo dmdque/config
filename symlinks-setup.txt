@@ -4,3 +4,4 @@ ln -s ~/git/config/vimrc ~/.vimrc
 ln -s ~/git/config/gitconfig ~/.gitconfig
 ln -s ~/git/config/rc-update ~/rc-update
 ln -s ~/git/config/ycm_extra_conf.py ~/.ycm_extra_conf.py
+ln -s ~/git/config/snip ~/.vim/snip

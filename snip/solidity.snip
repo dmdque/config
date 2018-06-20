@@ -1,0 +1,73 @@
+snippet pragma
+options head
+  pragma solidity 0.4.21;
+
+snippet modifier
+alias mod
+options head
+  modifier m() {
+    // logic here
+    _;
+  }
+
+snippet struct
+options head
+  struct s {
+  }
+
+snippet function
+alias fun
+  function f() {
+  }
+
+snippet for
+  for (uint i = 0; i < n; i++) {
+  }
+
+snippet mapping
+alias map
+  mapping(t => t) m;
+
+snippet test
+  import "truffle/Assert.sol";
+  import "../contracts/Contract.sol";
+
+
+  contract TestContract {
+
+      function beforeEach() public {
+      }
+
+      function testOne() public {
+          Assert.equal(true, true, "result is equal to expected");
+      }
+
+  }
+
+
+snippet contract
+alias con
+options head
+  import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
+  import "zeppelin-solidity/contracts/math/SafeMath.sol";
+  import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
+
+
+  contract Contract is Pausable {
+      using SafeMath for uint256;
+
+      event SomeEvent(uint256 value);
+
+      function Contract() public {
+      }
+
+      function fn() public {
+      }
+
+    }
+
+
+snippet /**
+  /**
+   *
+   */
