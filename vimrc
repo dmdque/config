@@ -230,19 +230,12 @@ let g:unite_source_grep_max_candidates = 50000
 
 
 " from uji
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
+if executable('rg')
+  let g:unite_source_grep_command = 'rg'
   let g:unite_source_grep_default_opts =
-        \ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
-        \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' --ignore tags'
+        \ '-i --line-number --color never --no-heading --hidden ' .
+        \ '-g "!build"'
   let g:unite_source_grep_recursive_opt = ''
-elseif executable('ack-grep')
-    " Use ack in unite grep source.
-    let g:unite_source_grep_command = 'ack-grep'
-    let g:unite_source_grep_default_opts =
-                \ '-i --no-heading --no-color -H ' .
-                \ '--ignore-dir="env"'
-    let g:unite_source_grep_recursive_opt = ''
 endif
 
 " also from uji
