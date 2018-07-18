@@ -234,7 +234,7 @@ if executable('rg')
   let g:unite_source_grep_command = 'rg'
   let g:unite_source_grep_default_opts =
         \ '-i --line-number --color never --no-heading --hidden ' .
-        \ '-g "!build"'
+        \ '-g "!build" -g "!cscope.out"'
   let g:unite_source_grep_recursive_opt = ''
 endif
 
@@ -280,14 +280,9 @@ nnoremap <Leader>v vg_
 let g:ctrlp_max_depth = 20
 let g:ctrlp_max_files = 40000
 let g:ctrlp_working_path_mode = '0' " for CtrlP local working directory
-let g:ctrlp_custom_ignore = {
-  \ 'dir': 'tnoodle\|node_modules\|dist\|env',
-  \ 'file': '.*\.png'
-  \ }
 if executable('rg')
-    let g:ctrlp_user_command = 'rg %s -l --files'
+    let g:ctrlp_user_command = 'rg %s -l --files --hidden -g "!env" -g "!node_modules"l -g "!dist" -g "!cscope.out" -g "!.git"'
 elseif executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --hidden -g ""'
 endif
 
 
@@ -450,4 +445,12 @@ let g:tagbar_type_solidity = {
       \ 'ctagsbin'  : 'ctags',
       \ 'ctagsargs' : '-f -'
       \ }
+nmap <F8> :TagbarToggle<CR>
 
+
+" Print options
+set printfont=courier:h10
+
+
+" Cursor Line
+set cursorline

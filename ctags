@@ -1,0 +1,14 @@
+--exclude=.git
+--exclude=node_modules
+
+--exclude=package.json
+--exclude=package-lock.json
+
+--langdef=solidity
+--langmap=solidity:.sol
+--regex-solidity=/^[ \t]*contract[ \t]([^ \t{]+)/\1/c,contract/
+--regex-solidity=/^[ \t]*function[ \t]([^\( \t]+)/\1/f,function/
+--regex-solidity=/^[ \t]*library[ \t]([^\( \t]+)/\1/l,library/
+--regex-solidity=/^[ \t]*event[ \t ]([^ \t\(]+)/\1/e,event/
+--regex-solidity=/^[ \t]*import[\t ]['"]([^'"]+)/\1/i,import/
+--regex-solidity=/^[ \t]*modifier[ \t]([^\( \t]+)/\1/m,modifier/

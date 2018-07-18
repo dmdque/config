@@ -1,6 +1,6 @@
 snippet pragma
 options head
-  pragma solidity 0.4.21;
+  pragma solidity 0.4.24;
 
 snippet modifier
 alias mod
@@ -48,17 +48,18 @@ snippet test
 snippet contract
 alias con
 options head
-  import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
-  import "zeppelin-solidity/contracts/math/SafeMath.sol";
-  import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
+  import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
+  import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+  import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
 
   contract Contract is Pausable {
+
       using SafeMath for uint256;
 
       event SomeEvent(uint256 value);
 
-      function Contract() public {
+      constructor() public {
       }
 
       function fn() public {
