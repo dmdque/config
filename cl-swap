@@ -1,6 +1,6 @@
 ! Swap caps lock and escape
 ! run xmodmap ~/cl-swap
 remove Lock = Caps_Lock
-keysym Escape = Caps_Lock
+! keysym Escape = Caps_Lock
 keysym Caps_Lock = Escape
-add Lock = Caps_Lock
+! add Lock = Caps_Lock

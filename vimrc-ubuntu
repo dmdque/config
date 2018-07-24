@@ -1,0 +1,2 @@
+set background=dark
+set clipboard=unnamedplus " use machine clipboard (need to compile vim with +clipboard for this to work)

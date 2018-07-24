@@ -113,12 +113,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "
 set autoindent " autoindenting
 
 
-" for ubuntu systems
-"set clipboard=unnamedplus " use machine clipboard (need to compile vim with +clipboard for this to work)
-" for mac systems
-set clipboard=unnamed " use machine clipboard (need to compile vim with +clipboard for this to work)
-
-
 " settings for gvim
 "set guioptions-=m " remove menu bar
 set guioptions-=T " remove toolbar
@@ -453,4 +447,12 @@ set printfont=courier:h10
 
 
 " Cursor Line
-"set cursorline
+set cursorline
+
+
+" Ubuntu
+"source ~/.vimrc-ubuntu
+
+
+" macOS
+source ~/.vimrc-macos
