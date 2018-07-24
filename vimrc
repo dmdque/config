@@ -453,4 +453,4 @@ set printfont=courier:h10
 
 
 " Cursor Line
-set cursorline
+"set cursorline

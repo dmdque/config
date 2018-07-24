@@ -1,0 +1,18 @@
+# Python
+env/
+
+# Node
+node_modules/
+package-lock.json
+
+# Ctags
+tags
+
+# Vim
+.*sw?
+
+# Truffle
+build/
+
+# MacOS
+.DS_Store
