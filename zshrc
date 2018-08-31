@@ -1,4 +1,4 @@
-source ~/.antigen.zsh  # Needs to source this twice on mbp2018 for some reason
+source ~/antigen.zsh
 source ~/.antigenrc
 
 # zsh-syntax-highlighting
@@ -88,12 +88,6 @@ bindkey '^[[B' history-substring-search-down
 #export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$CUDA_HOME/lib"
 #export PATH="$CUDA_HOME/bin:$PATH"
 
-# nvm temporary, fix this
-export NVM_DIR="/usr/local/opt/nvm/"
-#source /usr/local/opt/nvm/nvm.sh
-nvm() { . "$NVM_DIR/nvm.sh" ; nvm $@ ; }
-
-
 ## unsetopt EXTENDED_GLOB
 ## setopt IGNORE_BRACES
 #export PATH="$HOME/.rbenv/bin:$PATH"
@@ -118,7 +112,10 @@ compdef g=git
 export GOPATH=~/gocode
 
 
-# pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+## pyenv
+#if command -v pyenv 1>/dev/null 2>&1; then
+  #eval "$(pyenv init -)"
+#fi
+
+# cargo
+export PATH="$HOME/.cargo/bin:$PATH"

@@ -53,6 +53,7 @@ Plugin 'groenewege/vim-less'
 Plugin 'solarnz/thrift.vim'
 " for ejs
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'briancollins/vim-jst'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'tikhomirov/vim-glsl'
@@ -447,7 +448,7 @@ set printfont=courier:h10
 
 
 " Cursor Line
-set cursorline
+"set cursorline
 
 
 " Ubuntu
