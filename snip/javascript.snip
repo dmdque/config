@@ -33,3 +33,22 @@ snippet deployer
   }).then(function(contract) {
   });
 
+snippet contract
+  const Contract = artifacts.require('Contract');
+
+
+  contract('Contract', function(accounts) {
+
+    context('with', function() {
+    let contract;
+
+      beforeEach(async function () {
+        contract = await Contract.new();
+      });
+
+      it('should', async function() {
+      });
+
+    });
+
+  });
