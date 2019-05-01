@@ -4,7 +4,8 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'ncm2/ncm2'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'kien/ctrlp.vim'
 Plugin 'nelstrom/vim-visual-star-search'
@@ -31,11 +32,11 @@ Plugin 'majutsushi/tagbar'
 Plugin 'tsukkee/unite-tag'
 
 " Autocomplete
-"Plugin 'ncm2/ncm2'
-"Plugin 'roxma/nvim-yarp'
-"Plugin 'ncm2/ncm2-bufword'
-"Plugin 'ncm2/ncm2-jedi'
-"Plugin 'ncm2/ncm2-tern'  " Must npm install
+Plugin 'ncm2/ncm2'
+Plugin 'roxma/nvim-yarp'
+Plugin 'ncm2/ncm2-bufword'
+Plugin 'ncm2/ncm2-jedi'
+Plugin 'ncm2/ncm2-tern'  " Must npm install
 
 " Colourschemes
 Plugin 'morhetz/gruvbox'
@@ -368,7 +369,7 @@ set laststatus=2  " statusline always visible
 
 " Disable YouCompleteMe scratch preview
 set completeopt=menuone
-let g:ycm_min_num_of_chars_for_completion = 3
+let g:ycm_min_num_of_chars_for_completion = 8
 
 
 " Wrap in '' and add trailing comma
@@ -475,7 +476,10 @@ nmap <Leader>l :let @*=@% . ':' . line('.')<CR>
 nmap <Leader>t :Unite -start-insert tag<CR>
 
 
-"" nvim Autocomplete
-"autocmd BufEnter * call ncm2#enable_for_buffer()
-"" IMPORTANT: :help Ncm2PopupOpen for more information
-"set completeopt=noinsert,menuone,noselect
+" Autocomplete
+autocmd BufEnter * call ncm2#enable_for_buffer()
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

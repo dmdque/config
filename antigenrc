@@ -1,10 +1,20 @@
-antigen bundle robbyrussell/oh-my-zsh lib/
-antigen apply
+antigen use oh-my-zsh
+# Enable this if not using oh-my-zsh
+#HISTFILE=~/.zsh_history
+#HISTSIZE=50000
+#SAVEHIST=10000
+#setopt appendhistory
 
-antigen theme sorin
+# This is too slow, and theme is dependent on it
+#antigen bundle robbyrussell/oh-my-zsh lib/
+#antigen theme sorin
+
 
 antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-history-substring-search  # must be after zsh-syntax-highlighting
-antigen bundle junegunn/fzf
+#antigen bundle zsh-users/zsh-history-substring-search  # must be after zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
+antigen apply
+
+# Because sorin theme is too slow:
+PROMPT="%c $ "

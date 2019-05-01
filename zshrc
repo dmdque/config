@@ -2,7 +2,7 @@ source ~/antigen.zsh
 source ~/.antigenrc
 
 # zsh-syntax-highlighting
-ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'  # Get rid of path highlight
+# ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'  # Get rid of path highlight
 
 # zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
@@ -41,9 +41,9 @@ alias tc='truffle compile'
 alias tcl='truffle console'
 alias tt='truffle test'
 alias td='truffle debug'
-alias -g hd2='/Volumes/Transcend'
 alias server='python -m SimpleHTTPServer'
 alias vim='mvim -v'
+alias neovim='gnvim'
 function di() { dict $@ | less }
 function vsed() { vim -es $@ '+:q!' /dev/stdin }
 # cat ex | vim -es '+%join' '+%s/.*ENOENT.\{-}\(\/.\{-}\)\ .*/\2/g' '+%print' '+:q!' /dev/stdin
@@ -67,8 +67,8 @@ export VISUAL=vim
 
 # zsh-history-substring-search
 # must be after `set -o vi`
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+#bindkey '^[[A' history-substring-search-up
+#bindkey '^[[B' history-substring-search-down
 
 
 #
@@ -90,32 +90,49 @@ bindkey '^[[B' history-substring-search-down
 
 ## unsetopt EXTENDED_GLOB
 ## setopt IGNORE_BRACES
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
+unsetopt NOMATCH  # So [] works
 
 # Local node modules
-PATH=$PATH:./node_modules/.bin
+#PATH=$PATH:./node_modules/.bin
 
-## No arguments: `git status`
-## With arguments: acts like `git`
-unalias g
-function g() {
-  if [[ $# > 0 ]]; then
-    git $@
-  else
-    git status
-  fi
-}
+# No arguments: `git status`
+# With arguments: acts like `git`
+if command -v g 1>/dev/null 2>&1; then
+  unalias g
+  function g() {
+   if [[ $# > 0 ]]; then
+     git $@
+   else
+     git status
+   fi
+  }
+fi
+
 # Complete g like git
 compdef g=git
 
 export GOPATH=~/gocode
 
 
-## pyenv
+# rbenv
+#export PATH="$HOME/.rbenv/bin:$PATH"
+if command -v rbenv 1>/dev/null 2>&1; then
+  eval "$(rbenv init -)"
+fi
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 #if command -v pyenv 1>/dev/null 2>&1; then
   #eval "$(pyenv init -)"
 #fi
 
+# nodenv
+if command -v nodenv 1>/dev/null 2>&1; then
+  eval "$(nodenv init -)"
+fi
+
 # cargo
-export PATH="$HOME/.cargo/bin:$PATH"
+#export PATH="$HOME/.cargo/bin:$PATH"
+
+source ~/.cbzshrc

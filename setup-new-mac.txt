@@ -6,12 +6,12 @@ mkdir -p ~/setup
 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# install seil
+# install karabiner
 # install snap
 # install divvy
 # install 1password
-# install onenote
-# set date and time to show seconds
+# install quiver
+# set date and time to show seconds and date
 # install dropbox
 # spotify
 
