@@ -134,5 +134,3 @@ fi
 
 # cargo
 #export PATH="$HOME/.cargo/bin:$PATH"
-
-source ~/.cbzshrc
