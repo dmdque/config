@@ -131,6 +131,10 @@ set guioptions-=r " remove right-hand scroll bar
 set guioptions-=L " remove left-hand scroll bar
 
 
+" disable bell
+autocmd! GUIEnter * set vb t_vb=
+
+
 " save similar to other programs
 " not working in gvim for some reason
 nnoremap <C-s> :<C-u>update<CR>
@@ -479,3 +483,9 @@ nmap <Leader>t :Unite -start-insert tag<CR>
 "autocmd BufEnter * call ncm2#enable_for_buffer()
 "" IMPORTANT: :help Ncm2PopupOpen for more information
 "set completeopt=noinsert,menuone,noselect
+
+nmap <Leader>" :%s/'/"/g<CR>
+nmap <Leader>' :%s/"/'/g<CR>
+nmap <Leader>n :noh<CR>
+
+set timeoutlen=500
