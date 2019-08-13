@@ -1,2 +1,1 @@
-set clipboard=unnamed " use machine clipboard (need to compile vim with +clipboard for this to work)
 autocmd! GUIEnter * set vb t_vb=

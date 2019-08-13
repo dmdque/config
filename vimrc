@@ -489,3 +489,14 @@ nmap <Leader>' :%s/"/'/g<CR>
 nmap <Leader>n :noh<CR>
 
 set timeoutlen=500
+
+
+" yank to clipboard
+" use machine clipboard (need to compile vim with +clipboard for this to work)
+if has("clipboard")
+  set clipboard=unnamed " copy to the system clipboard
+
+  if has("unnamedplus") " X11 support
+    set clipboard+=unnamedplus
+  endif
+endif
