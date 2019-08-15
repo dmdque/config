@@ -1,2 +1,3 @@
 set incsearch
 set clipboard+=unnamed
+set ignorecase
