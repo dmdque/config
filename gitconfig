@@ -20,3 +20,12 @@
   st = status
 [credential]
   helper = cache --timeout=3600  ; 1 hour
+[commit]
+	gpgsign = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[merge]
+	conflictstyle = diff3
