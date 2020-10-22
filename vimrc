@@ -290,7 +290,7 @@ let g:ctrlp_max_depth = 20
 let g:ctrlp_max_files = 40000
 let g:ctrlp_working_path_mode = '0' " for CtrlP local working directory
 if executable('rg')
-    let g:ctrlp_user_command = 'rg %s -l --files --hidden -g "!env" -g "!node_modules"l -g "!dist" -g "!cscope.out" -g "!.git"'
+    let g:ctrlp_user_command = 'rg %s -l --files --hidden -g "!env" -g "!node_modules" -g "!dist" -g "!cscope.out" -g "!.git"'
 elseif executable('ag')
 endif
 
@@ -488,6 +488,7 @@ nmap <Leader>" :%s/'/"/g<CR>
 nmap <Leader>' :%s/"/'/g<CR>
 nmap <Leader>n :noh<CR>
 
+" Can't set this to 0 because it breaks window switching
 set timeoutlen=500
 
 
