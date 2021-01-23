@@ -42,7 +42,7 @@ alias tcl='truffle console'
 alias tt='truffle test'
 alias td='truffle debug'
 alias server='python -m SimpleHTTPServer'
-alias vim='mvim -v'
+#alias vim='mvim -v'
 alias neovim='gnvim'
 alias slz='npx sequelize'
 function di() { dict $@ | less }

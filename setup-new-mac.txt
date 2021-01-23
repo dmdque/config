@@ -57,3 +57,8 @@ brew install python  # this installs a second python, but also installs pip in /
 # cd ~/setup
 # curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 # python get-pip.py
+
+# fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+# from https://github.com/junegunn/fzf#using-git
