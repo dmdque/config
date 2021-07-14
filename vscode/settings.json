@@ -1,0 +1,20 @@
+{
+    "editor.minimap.enabled": false,
+    "vim.vimrc.path": "/Users/danielque/.vimrc-vscode",
+    "vim.vimrc.enable": true,
+    "vim.hlsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["Y"],
+            "after": ["y", "$"],
+        }
+    ],
+    "workbench.editor.limit.enabled": true,
+    "workbench.editor.limit.perEditorGroup": true,
+    "workbench.editor.limit.value": 1,
+    "workbench.editor.showTabs": false,
+    "editor.tabSize": 2,
+    "rust-analyzer.inlayHints.enable": false,
+    "rust-analyzer.lens.enable": false,
+}
